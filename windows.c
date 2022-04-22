@@ -1,45 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub.h                                              :+:      :+:    :+:   */
+/*   windows.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/22 11:03:23 by jperras           #+#    #+#             */
+/*   Created: 2022/04/22 13:36:16 by jperras           #+#    #+#             */
 /*   Updated: 2022/04/22 13:50:09 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "cub.h"
 
-#ifndef CUB_H
-# define CUB_H
-# include "../libft/libft.h"
-# include <math.h>
-# include <mlx.h>
-# include <stdlib.h>
-# include <fcntl.h>
-
-typedef struct s_vector
+static int	ft_close(void)
 {
-  int x;
-  int y;
-} t_vector;
+	exit(0);
+}
 
-typedef struct s_window
+t_win	ft_windows(void *mlx, int widht, int height, char *title)
 {
-  void *ref;
-  t_vector size;
-} t_win;
+	t_win	windows;
 
-typedef struct s_data
-{
-  void *mlx;
-  t_win win;
-}t_data;
-
-/*
-* ft_windows
-*/
-t_win	ft_windows(void *mlx, int widht, int height, char *title);
-
-#endif
+	windows.ref = mlx_new_window(mlx, widht, height, title);
+	windows.size.x = widht;
+	windows.size.y = height;
+	mlx_hook(windows.ref, 17, 0, ft_close, 0);
+	return (windows);
+}

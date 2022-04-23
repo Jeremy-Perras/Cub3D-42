@@ -6,13 +6,13 @@
 #    By: jperras <jperras@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/22 08:57:03 by jperras           #+#    #+#              #
-#    Updated: 2022/04/22 13:38:04 by jperras          ###   ########.fr        #
+#    Updated: 2022/04/23 13:08:58 by jperras          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 
-SRCS = test.c windows.c
+SRCS = test.c windows.c hook.c
 
 INCLUDES = -I./includes
 

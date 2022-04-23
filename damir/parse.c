@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 11:33:33 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/04/23 13:30:17 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/04/23 14:09:54 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 static void ft_texture(char *line, int *flag)
 {
 	if (ft_strncmp(line, "NO", 2))
-		*flag +=
-	if (ft_strncmp(line, "NO", 2))
-		*flag +=
-	if (ft_strncmp(line, "NO", 2))
-		*flag +=
-	if (ft_strncmp(line, "NO", 2))
-		*flag +=
-	if (ft_strncmp(line, "NO", 2))
-		*flag +=
-	if (ft_strncmp(line, "NO", 2))
-		*flag +=
+		*flag += n_texture(line);
+	if (ft_strncmp(line, "SO", 2))
+		*flag += s_texture(line);
+	if (ft_strncmp(line, "WE", 2))
+		*flag += w_texture(line);
+	if (ft_strncmp(line, "EA", 2))
+		*flag += e_texture(line);
+	if (ft_strncmp(line, "F", 1))
+		*flag += fc_texture(line);
+	if (ft_strncmp(line, "C", 1))
+		*flag += fc_texture(line);
 }
 
 static void ft_parse_line(char *line, int *flag)

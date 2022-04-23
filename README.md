@@ -2,7 +2,7 @@
 
 # main
 
-## ft_parse_map
+## ft_parse_map (char *line)
 
 ### ft_parse_line
 #### ft_texture

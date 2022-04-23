@@ -6,70 +6,84 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 11:33:33 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/04/23 15:08:44 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/04/23 18:35:33 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-static void ft_build_lab(char *line)
+static void ft_check_line(char *line, t_parse *parse)
+{
+	char caracters[] = "01NSEW \t";
+	char player[] = "NSEW";
+	int i = 0;
+
+	while (line[++i])
+	{
+		if (ft_strchr(player, line[i]))
+			parse->player++;
+		if (!ft_strchr(caracters, line[i]) || parse->player > 1)
+			exit_error("Error: Unexpected catacter");
+	}
+}
+
+static void ft_lab(char *line, t_parse *parse)
 {
 	static int x = 0;
-
-	data->map[x] = ft_strdup(line);
+	parse->count = 1;
+	line[ft_strlen(line) - 1] = '\0';
+ 	ft_check_line(line, parse);
+	parse->map[x] = ft_strdup(line);
 	x++;
-	data->map[x] = NULL;
+	parse->map[x] = NULL;
 }
 
-static void ft_lab(char *line)
+static void ft_parse_line(char *line, t_parse *parse)
 {
- 	ft_check_line_carac(line);
-	ft_build_lab(line);
-}
-
-
-static void ft_texture(char *line, int *flag)
-{
-	if (ft_strncmp(line, "NO", 2))
-		*flag += n_texture(line);
-	if (ft_strncmp(line, "SO", 2))
-		*flag += s_texture(line);
-	if (ft_strncmp(line, "WE", 2))
-		*flag += w_texture(line);
-	if (ft_strncmp(line, "EA", 2))
-		*flag += e_texture(line);
-	if (ft_strncmp(line, "F", 1))
-		*flag += fc_texture(line);
-	if (ft_strncmp(line, "C", 1))
-		*flag += fc_texture(line);
-}
-
-static void ft_parse_line(char *line, int *flag)
-{
-	if (*flag == 6)
-		ft_lab(line);
+	if (parse->flag == 6)
+		ft_lab(line, parse);
 	else
-		ft_texture(line, flag);
+		ft_texture(line, parse);
 }
 
-static int ft_is_empty_line(cahr *line)
+static int ft_is_empty_line(char *line)
 {
+	int i;
+
 	i = -1;
 	while (line[++i])
 	{
-		if (line[i] !=  ' ' && line[i] != '\t')
+		if (line[i] !=  ' ' && line[i] != '\t' && line[i] != '\n')
 			return(0);
 	}
 	return (1);
 }
 
 
-void ft_parse_map(char *map)
+static void ft_init_parse(t_parse **parse)
 {
-	int fd = open(map, O_RDONLY);
-	int flag = 0;
-	int count = 0;
+	*parse           = (t_parse *)malloc(sizeof(t_parse));
+	(*parse)->map    = (char **) malloc(sizeof(char **) * 1000);
+	(*parse)->flag   = 0;
+	(*parse)->count  = 0;
+	(*parse)->n      = 0;
+	(*parse)->s      = 0;
+	(*parse)->e      = 0;
+	(*parse)->w      = 0;
+	(*parse)->f      = 0;
+	(*parse)->c      = 0;
+	(*parse)->player = 0;
+}
 
+
+char **ft_parse_map(char *map)
+{
+	int 	fd;
+	t_parse *parse;
+
+	ft_init_parse(&parse);
+	printf("PARSE INIT\n");
+	fd = open(map, O_RDONLY);
 	if (fd < 0)
 		exit_error("Map could not be found");
 	char *line = get_next_line(fd);
@@ -77,24 +91,15 @@ void ft_parse_map(char *map)
 		exit_error("Map is empty");
 	while (line != NULL)
 	{
-		if (ft_is_empty_line && count)
+		if (ft_is_empty_line(line) && parse->count)
 			exit_error("Invalid map");
 		if (!ft_is_empty_line(line))
-			ft_parse_line(line, &flag, & count);
+			ft_parse_line(line, parse);
 		free(line);
 		line = get_next_line(fd);
 	}
-	if (flag != 6)
-		exit_error("Textures missgin in map");
-}
-
-void ft_check_line_carac(char **)
-{
-		char caracters[] = "01NSEW \t";
-
-		while (line[++i])
-		{
-			if (!ft_strchr(caracters, line[i]))
-				exit_error("Error: Unexpected catacter");
-		}
+	if (parse->flag != 6 || !parse->n || !parse->s || !parse->e
+			|| !parse->w || !parse->f || !parse->c)
+		exit_error("Textures missing in map");
+	return (parse->map);
 }

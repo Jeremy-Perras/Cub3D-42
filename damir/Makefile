@@ -6,7 +6,7 @@
 #    By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/14 01:08:17 by dhaliti           #+#    #+#              #
-#    Updated: 2022/04/23 11:37:09 by dhaliti          ###   ########.fr        #
+#    Updated: 2022/04/23 17:13:39 by dhaliti          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ RED			= \033[0;31m
 RST			= \033[0m
 END			= \e[0m
 
-SRCS		= main.c parse.c
-NAME		= cub
+SRCS		= main.c parse.c parse_texture.c utils.c
+NAME		= cub3D
 OBJS_DIR	= objs/
 OBJS		= $(SRCS:.c=.o)
 OBJECTS_PREFIXED = $(addprefix $(OBJS_DIR), $(OBJS))

@@ -6,85 +6,93 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 13:50:32 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/04/23 15:05:55 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/04/23 18:26:52 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-int n_texture(char *line)
+static int n_texture(char *line, t_parse *parse)
 {
 	int fd;
 	int i;
 	char **path;
 
 	path = ft_split(line, ' ');
-	fd = open(path[1], O_RDONLY)
+	path[1][ft_strlen(path[1]) - 1] = '\0';
+	fd = open(path[1], O_RDONLY);
 	if (fd < 0)
 		exit_error("Error: North texture's path cannot be found");
 	close(fd);
 	i = -1;
 	while (path[++i])
-		free(path[i])
+		free(path[i]);
 	free(path);
+	parse->n = 1;
 	return (1);
 }
 
-int s_texture(char *line)
+static int s_texture(char *line, t_parse *parse)
 {
 	int fd;
 	int i;
 	char **path;
 
 	path = ft_split(line, ' ');
-	fd = open(path[1], O_RDONLY)
+	path[1][ft_strlen(path[1]) - 1] = '\0';
+	fd = open(path[1], O_RDONLY);
 	if (fd < 0)
 		exit_error("Error: South texture's path cannot be found");
 	close(fd);
 	i = -1;
 	while (path[++i])
-		free(path[i])
+		free(path[i]);
+	parse->s = 1;
 	free(path);
 	return (1);
 }
 
-int w_texture(char *line)
+static int w_texture(char *line, t_parse *parse)
 {
 	int fd;
 	int i;
 	char **path;
 
 	path = ft_split(line, ' ');
-	fd = open(path[1], O_RDONLY)
+	path[1][ft_strlen(path[1]) - 1] = '\0';
+	fd = open(path[1], O_RDONLY);
 	if (fd < 0)
 		exit_error("Error: West texture's path cannot be found");
 	close(fd);
 	i = -1;
 	while (path[++i])
-		free(path[i])
+		free(path[i]);
+	parse->w = 1;
 	free(path);
 	return (1);
 }
 
-int e_texture(char *line)
+static int e_texture(char *line, t_parse *parse)
 {
 	int fd;
 	int i;
 	char **path;
 
 	path = ft_split(line, ' ');
-	fd = open(path[1], O_RDONLY)
+	path[1][ft_strlen(path[1]) - 1] = '\0';
+	fd = open(path[1], O_RDONLY);
 	if (fd < 0)
 		exit_error("Error: East texture's path cannot be found");
 	close(fd);
 	i = -1;
 	while (path[++i])
-		free(path[i])
+		free(path[i]);
+	parse->e = 1;
 	free(path);
 	return (1);
 }
 
-int fc_texture(char *line)
+static int fc_texture(char *line)
 {
 	int i;
 	char **cmd;
@@ -107,4 +115,27 @@ int fc_texture(char *line)
 	}
 	free(rgb);
 	free(cmd);
+	return (1);
+}
+
+void ft_texture(char *line, t_parse *parse)
+{
+	if (ft_strncmp(line, "NO", 2) == 0)
+		parse->flag += n_texture(line, parse);
+	if (ft_strncmp(line, "SO", 2) == 0)
+		parse->flag += s_texture(line, parse);
+	if (ft_strncmp(line, "WE", 2) == 0)
+		parse->flag += w_texture(line, parse);
+	if (ft_strncmp(line, "EA", 2) == 0)
+		parse->flag += e_texture(line, parse);
+	if (ft_strncmp(line, "F", 1) == 0)
+	{
+		parse->flag += fc_texture(line);
+		parse->f++;
+	}
+	if (ft_strncmp(line, "C", 1) == 0)
+	{
+		parse->flag += fc_texture(line);
+		parse->c++;
+	}
 }

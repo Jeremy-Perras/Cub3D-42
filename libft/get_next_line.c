@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 12:29:18 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/04/23 16:18:56 by jperras          ###   ########.fr       */
+/*   Updated: 2022/04/23 18:24:41 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char *get_next_line(int fd)
 			break;
 		line[j++] = buf;
 		if (buf == '\n')
-			break;
+			break ;
 	}
 	line[j] = 0;
 	if (!*line)

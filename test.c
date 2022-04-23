@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 09:02:29 by jperras           #+#    #+#             */
-/*   Updated: 2022/04/23 16:20:38 by jperras          ###   ########.fr       */
+/*   Updated: 2022/04/23 18:26:25 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void ft_init(t_data *data)
 {
-  data->map.map = malloc(sizeof(char*) *8);
+  data->map.map = malloc(sizeof(char *) *8);
   data->map.map[0] = malloc(sizeof(char) *8);
   data->map.map[1] = malloc(sizeof(char) *8);
   data->map.map[2] = malloc(sizeof(char) *8);
@@ -34,6 +34,9 @@ void ft_init(t_data *data)
   data->map.map[7] = "11111111";
   data->player.position.x = 4;
   data->player.position.y = 4;
+  data->player.speed = 0.1;
+  data->player.angle = 0;
+  data->player.rot_speed = 0.02;
 }
 
 int main(void)
@@ -43,6 +46,7 @@ int main(void)
   data.mlx = mlx_init();
   data.win = ft_windows(data.mlx, 50 * 8, 50 * 8, "test");
   ft_init(&data);
+  ft_put_image(&data);
   mlx_key_hook(data.win.ref, key, &data);
   ft_put_background(&data);
   mlx_loop(data.mlx);

@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 11:03:23 by jperras           #+#    #+#             */
-/*   Updated: 2022/04/23 16:15:34 by jperras          ###   ########.fr       */
+/*   Updated: 2022/04/23 18:42:33 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,24 @@ typedef struct t_map
   char **map;
 } t_map;
 
- typedef struct s_vector
+typedef struct s_vector
+{
+ int x;
+ int y;
+} t_vector;
+
+ typedef struct s_position
 {
   int x;
   int y;
-} t_vector;
+} t_position;
 
 typedef struct s_player
 {
-  t_vector position;
+  t_position position;
+  double speed;
+  double angle;
+  double rot_speed;
 } t_player;
 
 typedef struct s_image
@@ -63,7 +72,8 @@ typedef struct s_data
 * windows.c
 */
 t_win   ft_windows(void *mlx, int widht, int height, char *title);
-void	ft_put_background(t_data *data);
+void    ft_put_background(t_data *data);
+void    ft_put_image(t_data *data);
 /*
 * hook.c
 */

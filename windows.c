@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 13:36:16 by jperras           #+#    #+#             */
-/*   Updated: 2022/04/23 16:15:35 by jperras          ###   ########.fr       */
+/*   Updated: 2022/04/23 17:08:16 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static t_image	ft_new_image(void *mlx, char *path)
 	return (image);
 }
 
-static void ft_put_image(t_data *data)
+void ft_put_image(t_data *data)
 {
 	data->image = malloc(sizeof(t_image) * 3);
 	data->image[0] = ft_new_image(data->mlx, "image/Greensquare.xpm");
@@ -49,8 +49,8 @@ void	ft_put_background(t_data *data)
 	int	x;
 	int	y;
 
-	ft_put_image(data);
 	y = 0;
+	mlx_clear_window(data->mlx, data->win.ref);
 	while (y * Height < data->win.size.y)
 	{
 		x = 0;

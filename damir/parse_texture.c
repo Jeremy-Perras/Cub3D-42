@@ -6,13 +6,13 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 13:50:32 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/04/23 14:10:42 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/04/23 15:05:55 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-void n_texture(char *line)
+int n_texture(char *line)
 {
 	int fd;
 	int i;
@@ -21,18 +21,16 @@ void n_texture(char *line)
 	path = ft_split(line, ' ');
 	fd = open(path[1], O_RDONLY)
 	if (fd < 0)
-	{
-		printf("Error: North texture's path cannot be found");
-		exit(1);
-	}
+		exit_error("Error: North texture's path cannot be found");
 	close(fd);
 	i = -1;
 	while (path[++i])
 		free(path[i])
 	free(path);
+	return (1);
 }
 
-void s_texture(char *line)
+int s_texture(char *line)
 {
 	int fd;
 	int i;
@@ -41,18 +39,16 @@ void s_texture(char *line)
 	path = ft_split(line, ' ');
 	fd = open(path[1], O_RDONLY)
 	if (fd < 0)
-	{
-		printf("Error: South texture's path cannot be found");
-		exit(1);
-	}
+		exit_error("Error: South texture's path cannot be found");
 	close(fd);
 	i = -1;
 	while (path[++i])
 		free(path[i])
 	free(path);
+	return (1);
 }
 
-void w_texture(char *line)
+int w_texture(char *line)
 {
 	int fd;
 	int i;
@@ -61,18 +57,16 @@ void w_texture(char *line)
 	path = ft_split(line, ' ');
 	fd = open(path[1], O_RDONLY)
 	if (fd < 0)
-	{
-		printf("Error: West texture's path cannot be found");
-		exit(1);
-	}
+		exit_error("Error: West texture's path cannot be found");
 	close(fd);
 	i = -1;
 	while (path[++i])
 		free(path[i])
 	free(path);
+	return (1);
 }
 
-void e_texture(char *line)
+int e_texture(char *line)
 {
 	int fd;
 	int i;
@@ -81,33 +75,36 @@ void e_texture(char *line)
 	path = ft_split(line, ' ');
 	fd = open(path[1], O_RDONLY)
 	if (fd < 0)
-	{
-		printf("Error: East texture's path cannot be found");
-		exit(1);
-	}
+		exit_error("Error: East texture's path cannot be found");
 	close(fd);
 	i = -1;
 	while (path[++i])
 		free(path[i])
 	free(path);
+	return (1);
 }
 
-void fc_texture(char *line)
+int fc_texture(char *line)
 {
-	int fd;
 	int i;
-	char **path;
+	char **cmd;
+	char **rgb;
 
-	path = ft_split(line, ' ');
-	fd = open(path[1], O_RDONLY)
-	if (fd < 0)
-	{
-		printf("Error: North texture's path cannot be found");
-		exit(1);
-	}
-	close(fd);
+	cmd = ft_split(line, ' ');
+	if (!cmd[1])
+		exit_error("Error: Ceiling and floor color values missing");
+	rgb = ft_split(cmd[1], ',');
+	if (!rgb[1] || !rgb[2])
+		exit_error("Error: Ceiling and floor color values missing");
 	i = -1;
-	while (path[++i])
-		free(path[i])
-	free(path);
+	while (rgb[++i])
+	{
+		if (ft_atoi(rgb[i]) > 255 || ft_atoi(rgb[i]) < 0)
+			exit_error("Ceiling or floor invalid color values");
+		free(rgb[i]);
+		if (cmd[i])
+			free(cmd[i]);
+	}
+	free(rgb);
+	free(cmd);
 }

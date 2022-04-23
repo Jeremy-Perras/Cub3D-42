@@ -6,11 +6,27 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 11:33:33 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/04/23 14:09:54 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/04/23 15:08:44 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+static void ft_build_lab(char *line)
+{
+	static int x = 0;
+
+	data->map[x] = ft_strdup(line);
+	x++;
+	data->map[x] = NULL;
+}
+
+static void ft_lab(char *line)
+{
+ 	ft_check_line_carac(line);
+	ft_build_lab(line);
+}
+
 
 static void ft_texture(char *line, int *flag)
 {
@@ -52,39 +68,33 @@ void ft_parse_map(char *map)
 {
 	int fd = open(map, O_RDONLY);
 	int flag = 0;
+	int count = 0;
 
 	if (fd < 0)
-	{
-		printf("%s: map could not be found\n", ft_strrchr(map, '/');
-		exit(1);
-	}
+		exit_error("Map could not be found");
 	char *line = get_next_line(fd);
 	if (!line)
-	{
-		printf("%s: Empty file\n", ft_strrchr(map, '/');
-		exit(1);
-	}
+		exit_error("Map is empty");
 	while (line != NULL)
 	{
+		if (ft_is_empty_line && count)
+			exit_error("Invalid map");
 		if (!ft_is_empty_line(line))
-			ft_parse_line(line, &flag);
+			ft_parse_line(line, &flag, & count);
 		free(line);
 		line = get_next_line(fd);
 	}
-
+	if (flag != 6)
+		exit_error("Textures missgin in map");
 }
 
-void ft_check_map(char **)
+void ft_check_line_carac(char **)
 {
 		char caracters[] = "01NSEW \t";
 
-	/* Verifie si la ligne ne contient que les caracteres autorises */
 		while (line[++i])
 		{
 			if (!ft_strchr(caracters, line[i]))
-			{
-				printf("Error: Unexpected catacter: %c", line[i]);
-				exit(0);
-			}
+				exit_error("Error: Unexpected catacter");
 		}
 }

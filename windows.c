@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 13:36:16 by jperras           #+#    #+#             */
-/*   Updated: 2022/04/23 14:23:15 by jperras          ###   ########.fr       */
+/*   Updated: 2022/04/23 16:15:35 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_win	ft_windows(void *mlx, int widht, int height, char *title)
 	return (windows);
 }
 
-t_image	ft_new_image(void *mlx, char *path)
+static t_image	ft_new_image(void *mlx, char *path)
 {
 	t_image	image;
 
@@ -36,10 +36,12 @@ t_image	ft_new_image(void *mlx, char *path)
 	return (image);
 }
 
-void ft_put_image(t_data *data)
+static void ft_put_image(t_data *data)
 {
-	data.image = malloc(sizeof(t_image) * 2);
-
+	data->image = malloc(sizeof(t_image) * 3);
+	data->image[0] = ft_new_image(data->mlx, "image/Greensquare.xpm");
+	data->image[1] = ft_new_image(data->mlx, "image/Bluesquare.xpm");
+	data->image[2] = ft_new_image(data->mlx, "image/Player.xpm");
 }
 
 void	ft_put_background(t_data *data)
@@ -47,6 +49,7 @@ void	ft_put_background(t_data *data)
 	int	x;
 	int	y;
 
+	ft_put_image(data);
 	y = 0;
 	while (y * Height < data->win.size.y)
 	{
@@ -60,7 +63,10 @@ void	ft_put_background(t_data *data)
 			}
 			else
 				mlx_put_image_to_window(data->mlx, data->win.ref,
-					data->image[0].ref, Width * x, Height* y);
+					data->image[1].ref, Width * x, Height* y);
+			if(data->player.position.x == x && data->player.position.y == y)
+				mlx_put_image_to_window(data->mlx, data->win.ref,
+					data->image[2].ref, Width * x, Height* y);
 			x++;
 		}
 		y++;

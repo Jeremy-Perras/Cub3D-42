@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 12:29:18 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/04/23 12:55:22 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/04/23 16:18:56 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char *get_next_line(int fd)
 {
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0)
 		return (NULL);
 
 	char buf;

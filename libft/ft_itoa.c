@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:09:31 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/02/22 12:04:12 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/04/23 21:25:19 by jeremyperras     ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ char	*ft_itoa(int n)
 	char				*str;
 	long int			length;
 	unsigned int		number;
-	int					sign;
+//	int					sign;
 
-	sign = 1;
+//	sign = 1;
 	length = ft_length(n);
 	str = (char *)malloc(sizeof(char) * (length + 1));
 	if (!(str))
@@ -54,7 +54,7 @@ char	*ft_itoa(int n)
 		str[0] = '0';
 	if (n < 0)
 	{
-		sign *= -1;
+	//	sign *= -1;
 		number = n * -1;
 		str[0] = '-';
 	}

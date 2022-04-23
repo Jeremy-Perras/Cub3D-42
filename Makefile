@@ -6,7 +6,7 @@
 #    By: jperras <jperras@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/22 08:57:03 by jperras           #+#    #+#              #
-#    Updated: 2022/04/23 13:08:58 by jperras          ###   ########.fr        #
+#    Updated: 2022/04/23 21:26:30 by jeremyperras     ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,11 @@ OBJS = $(SRCS:.c=.o)
 
 CC = gcc
 
+LIBMLX = -L minilibx -lmlx
+
 FLAGS = -Wall -Werror -Wextra
 
-LIBMLX = -L /usr/local/lib -lmlx
+#LIBMLX = -L /usr/local/lib -lmlx
 
 LIBFT = -L libft -lft
 
@@ -35,6 +37,7 @@ OTHER = -framework OpenGL -framework AppKit
 
 $(NAME) : $(OBJS)
 	make -C libft
+	make -C minilibx
 	$(CC) $(FLAGS) -o $(NAME) $(LIBMLX) $(LIBFT) $(OTHER) $(INCLUDES) $(OBJS)
 
 all : $(NAME)
@@ -48,11 +51,14 @@ debug :
 
 clean :
 	make clean -C libft
+	make clean -C minilibx
 	rm -rf $(OBJS)
 
 fclean : clean
 	make fclean -C libft
+	make fclean -C minilibx
 	rm -rf $(NAME)
 
 re : fclean all
 	make re -C libft
+	make re -C minilibx

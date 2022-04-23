@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 11:03:23 by jperras           #+#    #+#             */
-/*   Updated: 2022/04/23 18:42:33 by jperras          ###   ########.fr       */
+/*   Updated: 2022/04/23 21:24:24 by jeremyperras     ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../libft/libft.h"
 # include <math.h>
 # include <stdio.h>
-# include <mlx.h>
+# include "../minilibx/mlx.h"
 # include <stdlib.h>
 # include <fcntl.h>
 # define Height 50

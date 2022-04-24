@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 11:03:23 by jperras           #+#    #+#             */
-/*   Updated: 2022/04/23 21:24:24 by jeremyperras     ###   ########.fr       */
+/*   Updated: 2022/04/24 09:38:06 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef struct s_vector
 
  typedef struct s_position
 {
-  int x;
-  int y;
+  double x;
+  double y;
 } t_position;
 
 typedef struct s_player

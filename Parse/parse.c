@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 11:33:33 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/04/23 18:35:33 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/04/25 16:39:25 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ char **ft_parse_map(char *map)
 	t_parse *parse;
 
 	ft_init_parse(&parse);
-	printf("PARSE INIT\n");
 	fd = open(map, O_RDONLY);
 	if (fd < 0)
 		exit_error("Map could not be found");

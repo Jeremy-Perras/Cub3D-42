@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 14:37:41 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/04/23 17:08:08 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/04/25 16:38:33 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 void exit_error(char *msg)
 {
-	printf("%s\n", msg);
+	int i;
+
+	i = -1;
+	while (msg[++i])
+		printf("\033[0;33m%c", ft_toupper(msg[i]));
+	printf("\n");
 	exit(1);
 }

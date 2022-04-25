@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 11:32:58 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/04/23 17:21:09 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/04/25 11:12:14 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,5 @@ int main(int ac, char **av)
 	int i = -1;
 	while(map[++i])
 		printf("%s\n", map[i]);
+	ft_check_map(map);
 }

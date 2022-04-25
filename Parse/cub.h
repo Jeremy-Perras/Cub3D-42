@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 11:33:56 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/04/23 18:31:04 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/04/25 11:11:56 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_parse
 char **ft_parse_map(char *map);
 void ft_texture(char *line, t_parse *parse);
 void exit_error(char *msg);
+void ft_check_map(char **map);
 
 
 #endif

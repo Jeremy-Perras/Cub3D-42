@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 11:03:23 by jperras           #+#    #+#             */
-/*   Updated: 2022/04/26 16:02:40 by jperras          ###   ########.fr       */
+/*   Updated: 2022/04/26 17:01:56 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include "../minilibx/mlx.h"
 # include <stdlib.h>
 # include <fcntl.h>
-# define Height 50
-# define Width 50
+# define Height 1920
+# define Width 1080
 # define Screen 128
 
 typedef struct t_map
@@ -79,5 +79,6 @@ void    ft_put_image(t_data *data);
 * hook.c
 */
 int      key(int key, t_data *data);
+void ft_raycasting(t_data *data);
 
 #endif

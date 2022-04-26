@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 09:02:29 by jperras           #+#    #+#             */
-/*   Updated: 2022/04/25 16:47:44 by jperras          ###   ########.fr       */
+/*   Updated: 2022/04/26 17:05:19 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void ft_init(t_data *data)
   data->map.map[7] = "11111111";
   data->player.position.x = 4;
   data->player.position.y = 4;
-  data->player.speed = 1.0;
+  data->player.speed = 0.5;
   data->player.angle = 0;
   data->player.rot_speed = M_PI / 2;
 }
@@ -44,10 +44,11 @@ int main(void)
   t_data  data;
 
   data.mlx = mlx_init();
-  data.win = ft_windows(data.mlx, 50 * 8, 50 * 8, "test");
+  data.win = ft_windows(data.mlx,1920 , 1080, "test");
   ft_init(&data);
   ft_put_image(&data);
+  ft_raycasting(&data);
   mlx_key_hook(data.win.ref, key, &data);
-  ft_put_background(&data);
+  // ft_put_background(&data);
   mlx_loop(data.mlx);
 }

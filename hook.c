@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 12:58:03 by jperras           #+#    #+#             */
-/*   Updated: 2022/04/25 16:44:43 by jperras          ###   ########.fr       */
+/*   Updated: 2022/04/26 17:03:09 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int key(int key, t_data *data)
     data->player.angle -= 2 * M_PI;
   if (data->player.angle <= - 2 * M_PI)
     data->player.angle += 2 * M_PI;
-  ft_put_background(data);
+  // ft_put_background(data);
+    ft_raycasting(data);
     return (0);
 }

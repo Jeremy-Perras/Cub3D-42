@@ -6,13 +6,13 @@
 #    By: jperras <jperras@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/22 08:57:03 by jperras           #+#    #+#              #
-#    Updated: 2022/04/23 21:26:30 by jeremyperras     ###   ########.fr        #
+#    Updated: 2022/04/26 16:58:04 by jperras          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 
-SRCS = test.c windows.c hook.c
+SRCS = test.c windows.c hook.c raycasting.c
 
 INCLUDES = -I./includes
 
@@ -22,7 +22,7 @@ CC = gcc
 
 LIBMLX = -L minilibx -lmlx
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -g
 
 #LIBMLX = -L /usr/local/lib -lmlx
 

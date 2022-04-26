@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 11:03:23 by jperras           #+#    #+#             */
-/*   Updated: 2022/04/24 09:38:06 by jperras          ###   ########.fr       */
+/*   Updated: 2022/04/26 16:02:40 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <fcntl.h>
 # define Height 50
 # define Width 50
+# define Screen 128
 
 typedef struct t_map
 {

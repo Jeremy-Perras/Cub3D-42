@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 09:02:29 by jperras           #+#    #+#             */
-/*   Updated: 2022/04/24 09:38:41 by jperras          ###   ########.fr       */
+/*   Updated: 2022/04/25 16:47:44 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void ft_init(t_data *data)
   data->player.position.y = 4;
   data->player.speed = 1.0;
   data->player.angle = 0;
-  data->player.rot_speed = M_PI / 4;
+  data->player.rot_speed = M_PI / 2;
 }
 
 int main(void)

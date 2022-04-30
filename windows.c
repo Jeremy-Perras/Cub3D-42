@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 13:36:16 by jperras           #+#    #+#             */
-/*   Updated: 2022/04/30 16:40:55 by jperras          ###   ########.fr       */
+/*   Updated: 2022/04/30 17:20:35 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void ft_put_image(t_data *data)
 {
 	data->image = malloc(sizeof(t_image) * 3);
 	data->image[0] = ft_new_image(data->mlx, data->n);
-	data->image[1] = ft_new_image(data->mlx, "image/Bluesquare.xpm");
+	data->image[1] = ft_new_image(data->mlx, data->s);
 	data->image[2] = ft_new_image(data->mlx, "image/Player.xpm");
 }
 

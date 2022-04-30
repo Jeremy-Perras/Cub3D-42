@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 09:02:29 by jperras           #+#    #+#             */
-/*   Updated: 2022/04/30 16:41:34 by jperras          ###   ########.fr       */
+/*   Updated: 2022/04/30 17:30:01 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int main(int ac, char **av)
   data->win = ft_windows(data->mlx, Width ,Height , "test");
   ft_init(data);
   ft_put_image(data);
+  ft_draw(data);
   ft_put_background(data);
   ft_raycasting(data);
   mlx_key_hook(data->win.ref, key, data);

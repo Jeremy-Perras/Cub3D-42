@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 11:33:56 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/04/30 16:45:05 by jperras          ###   ########.fr       */
+/*   Updated: 2022/04/30 17:29:09 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <mlx.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# define Height 1920
-# define Width 1080
+# define Height 128
+# define Width 128
 # define Screen 128
 
 typedef struct t_map
@@ -105,6 +105,7 @@ int 	c_color(char *line, t_parse *parse, t_data *data);
 t_win   ft_windows(void *mlx, int widht, int height, char *title);
 void    ft_put_background(t_data *data);
 void    ft_put_image(t_data *data);
+void    ft_draw(t_data *data);
 /*
 * hook.c
 */

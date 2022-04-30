@@ -6,14 +6,33 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 12:49:10 by jperras           #+#    #+#             */
-/*   Updated: 2022/04/30 16:39:06 by jperras          ###   ########.fr       */
+/*   Updated: 2022/04/30 17:29:28 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include"cub.h"
 
+void ft_draw(t_data *data)
+{
+  int x;
+  int y;
 
+  x = 0;
+  y = 0;
+  while(x < 128)
+  {
+    y = 0;
+    while(y < 64)
+    {
+        mlx_put_image_to_window(data->mlx, data->win.ref, data->image[1].ref, x, y);
+        y++;
+    }
+    x++;
+  }
+
+
+}
 void ft_raycasting(t_data *data)
 {
   double pix;
@@ -65,7 +84,7 @@ void ft_raycasting(t_data *data)
     }
     while(hit == 0)
     {
-      if(sidedistx < sidedisty)
+      if((sidedistx >= 0 || sidedisty <= 0) && sidedistx < sidedisty)
       {
         sidedistx += deltadistx;
         mapx += stepx;

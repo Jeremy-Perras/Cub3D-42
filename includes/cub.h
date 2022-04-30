@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 11:33:56 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/04/30 16:40:04 by jperras          ###   ########.fr       */
+/*   Updated: 2022/04/30 16:45:05 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <mlx.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# define Height 128
-# define Width 128
+# define Height 1920
+# define Width 1080
 # define Screen 128
 
 typedef struct t_map

@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 11:33:33 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/04/25 16:39:25 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/04/30 14:45:19 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ static void ft_lab(char *line, t_parse *parse)
 	parse->map[x] = NULL;
 }
 
-static void ft_parse_line(char *line, t_parse *parse)
+static void ft_parse_line(char *line, t_parse *parse, t_data *data)
 {
 	if (parse->flag == 6)
 		ft_lab(line, parse);
 	else
-		ft_texture(line, parse);
+		ft_texture(line, parse, data);
 }
 
 static int ft_is_empty_line(char *line)
@@ -60,7 +60,7 @@ static int ft_is_empty_line(char *line)
 }
 
 
-static void ft_init_parse(t_parse **parse)
+static void ft_init_parse_and_data(t_parse **parse, t_data **data)
 {
 	*parse           = (t_parse *)malloc(sizeof(t_parse));
 	(*parse)->map    = (char **) malloc(sizeof(char **) * 1000);
@@ -73,19 +73,22 @@ static void ft_init_parse(t_parse **parse)
 	(*parse)->f      = 0;
 	(*parse)->c      = 0;
 	(*parse)->player = 0;
+	*data = (t_data *)malloc(sizeof(t_data));
 }
 
 
-char **ft_parse_map(char *map)
+t_data *ft_parse_map(char *map)
 {
 	int 	fd;
 	t_parse *parse;
+	char 	*line;
+	t_data	*data;
 
-	ft_init_parse(&parse);
+	ft_init_parse_and_data(&parse, &data);
 	fd = open(map, O_RDONLY);
 	if (fd < 0)
 		exit_error("Map could not be found");
-	char *line = get_next_line(fd);
+	line = get_next_line(fd);
 	if (!line)
 		exit_error("Map is empty");
 	while (line != NULL)
@@ -93,12 +96,14 @@ char **ft_parse_map(char *map)
 		if (ft_is_empty_line(line) && parse->count)
 			exit_error("Invalid map");
 		if (!ft_is_empty_line(line))
-			ft_parse_line(line, parse);
+			ft_parse_line(line, parse, data);
 		free(line);
 		line = get_next_line(fd);
 	}
 	if (parse->flag != 6 || !parse->n || !parse->s || !parse->e
 			|| !parse->w || !parse->f || !parse->c)
 		exit_error("Textures missing in map");
-	return (parse->map);
+	ft_check_map(parse->map);
+	data->map = parse->map;
+	return (data);
 }

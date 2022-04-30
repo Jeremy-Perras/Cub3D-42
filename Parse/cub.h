@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 11:33:56 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/04/25 11:11:56 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/04/30 14:56:07 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,27 @@ typedef struct s_parse
 	int		player;
 } t_parse;
 
-char **ft_parse_map(char *map);
-void ft_texture(char *line, t_parse *parse);
-void exit_error(char *msg);
-void ft_check_map(char **map);
+typedef struct s_data
+{
+	char	*n;
+	char	*s;
+	char	*e;
+	char	*w;
+	int		c_r;
+	int		c_g;
+	int		c_b;
+	int		f_r;
+	int		f_g;
+	int		f_b;
+	char 	**map;
+} t_data;
+
+t_data 	*ft_parse_map(char *map);
+void 	ft_texture(char *line, t_parse *parse, t_data *data);
+void  	exit_error(char *msg);
+void 	ft_check_map(char **map);
+int 	f_color(char *line, t_parse *parse, t_data *data);
+int 	c_color(char *line, t_parse *parse, t_data *data);
 
 
 #endif

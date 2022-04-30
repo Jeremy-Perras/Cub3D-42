@@ -6,7 +6,7 @@
 #    By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/22 21:02:38 by dhaliti           #+#    #+#              #
-#    Updated: 2022/04/20 15:05:01 by dhaliti          ###   ########.fr        #
+#    Updated: 2022/04/27 15:12:17 by dhaliti          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,8 @@ SRCS	=	ft_isalnum.c \
 			x_format.c \
 			p_format.c \
 			s_format.c \
-			get_next_line.c
+			get_next_line.c \
+			ft_atof.c
 
 
 OBJS			= $(SRCS:.c=.o)

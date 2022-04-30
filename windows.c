@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 13:36:16 by jperras           #+#    #+#             */
-/*   Updated: 2022/04/26 16:51:51 by jperras          ###   ########.fr       */
+/*   Updated: 2022/04/30 16:40:55 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static t_image	ft_new_image(void *mlx, char *path)
 void ft_put_image(t_data *data)
 {
 	data->image = malloc(sizeof(t_image) * 3);
-	data->image[0] = ft_new_image(data->mlx, "image/Greensquare.xpm");
+	data->image[0] = ft_new_image(data->mlx, data->n);
 	data->image[1] = ft_new_image(data->mlx, "image/Bluesquare.xpm");
 	data->image[2] = ft_new_image(data->mlx, "image/Player.xpm");
 }
@@ -50,23 +50,21 @@ void	ft_put_background(t_data *data)
 	int	y;
 
 	y = 0;
+	x = 0;
 	mlx_clear_window(data->mlx, data->win.ref);
-	while (y * Height < data->win.size.y)
+	while (data->map[y])
 	{
 		x = 0;
-		while (x * Width < data->win.size.x)
+		while (data->map[y][x])
 		{
-			if (data->map.map[x][y] == '1')
+			if (data->map[y][x] == '1')
 			{
-				mlx_put_image_to_window(data->mlx, data->win.ref,
-					data->image[0].ref, Width * x, Height* y);
+				mlx_pixel_put(data->mlx, data->win.ref, x, y, 0x00FF0000);
 			}
-			else
-				mlx_put_image_to_window(data->mlx, data->win.ref,
-					data->image[1].ref, Width * x, Height* y);
+			else if (data->map[y][x] == '0')
+				mlx_pixel_put(data->mlx, data->win.ref, x, y, 0x00FFFFFF);
 			if(data->player.position.x == x && data->player.position.y == y)
-				mlx_put_image_to_window(data->mlx, data->win.ref,
-					data->image[2].ref, Width * x, Height* y);
+				mlx_pixel_put(data->mlx, data->win.ref, x, y, 0xFFFFFFFF);
 			x++;
 		}
 		y++;

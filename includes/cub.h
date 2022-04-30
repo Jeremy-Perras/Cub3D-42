@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/22 11:03:23 by jperras           #+#    #+#             */
-/*   Updated: 2022/04/30 15:02:40 by jperras          ###   ########.fr       */
+/*   Created: 2022/04/23 11:33:56 by dhaliti           #+#    #+#             */
+/*   Updated: 2022/04/30 16:40:04 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #ifndef CUB_H
-# define CUB_H
-# include "../libft/libft.h"
+#define CUB_H
+
+#include "../libft/libft.h"
 # include <math.h>
 # include <stdio.h>
-# include "../minilibx/mlx.h"
+# include <mlx.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# define Height 1920
-# define Width 1080
-# define Screen 1920
+# define Height 128
+# define Width 128
+# define Screen 128
 
 typedef struct t_map
 {
@@ -50,7 +50,7 @@ typedef struct s_player
 
 typedef struct s_image
 {
-  void * ref;
+  void *ref;
   t_vector size;
 } t_image;
 
@@ -59,16 +59,46 @@ typedef struct s_window
   void *ref;
   t_vector size;
 } t_win;
+typedef struct s_parse
+{
+	char	**map;
+	int		flag;
+	int		count;
+	int		n;
+	int		s;
+	int		e;
+	int		w;
+	int		f;
+	int		c;
+	int		player;
+} t_parse;
 
 typedef struct s_data
 {
-  void *mlx;
-  t_win win;
-  t_image *image;
-  t_map  map;
-  t_player player;
+	char	*n;
+	char	*s;
+	char	*e;
+	char	*w;
+	int		c_r;
+	int		c_g;
+	int		c_b;
+	int		f_r;
+	int		f_g;
+	int		f_b;
+	char 	**map;
+	void 	*mlx;
+	t_win 	win;
+	t_image *image;
+	t_map 	map1;
+	t_player player;
 } t_data;
 
+t_data 	*ft_parse_map(char *map);
+void 	ft_texture(char *line, t_parse *parse, t_data *data);
+void  	exit_error(char *msg);
+void 	ft_check_map(char **map);
+int 	f_color(char *line, t_parse *parse, t_data *data);
+int 	c_color(char *line, t_parse *parse, t_data *data);
 /*
 * windows.c
 */
@@ -80,5 +110,6 @@ void    ft_put_image(t_data *data);
 */
 int      key(int key, t_data *data);
 void ft_raycasting(t_data *data);
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 12:49:10 by jperras           #+#    #+#             */
-/*   Updated: 2022/04/30 15:08:40 by jperras          ###   ########.fr       */
+/*   Updated: 2022/04/30 16:39:06 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void ft_raycasting(t_data *data)
         mapy += stepy;
         side = 1;
       }
-      if(data->map.map[mapy][mapx] != '0')
+      if(data->map1.map[mapy][mapx] != '0')
         hit = 1;
     }
     if (side == 0)
@@ -87,7 +87,8 @@ void ft_raycasting(t_data *data)
     double y = 64 - 32 / perwalldist;
     while(y < 64 + (32 / perwalldist))
     {
-        mlx_pixel_put(data->mlx, data->win.ref, pix, y, 0xFF0000);
+      //  mlx_pixel_put(data->mlx, data->win.ref, pix, y, 0xFF0000);
+        mlx_put_image_to_window(data->mlx, data->win.ref, data->image[0].ref, pix, y);
         y++;
     }
     pix++;

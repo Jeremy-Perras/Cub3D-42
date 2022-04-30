@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 11:33:56 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/04/30 14:56:07 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/04/30 16:00:15 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@ typedef struct s_data
 	int		f_g;
 	int		f_b;
 	char 	**map;
+	void 	*mlx;
+	t_win 	win;
+	t_image *image;
+	t_map 	map1;
+	t_player player;
 } t_data;
 
 t_data 	*ft_parse_map(char *map);

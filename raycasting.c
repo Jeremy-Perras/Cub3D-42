@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 12:49:10 by jperras           #+#    #+#             */
-/*   Updated: 2022/04/30 17:29:28 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/01 15:45:38 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,16 @@ void ft_raycasting(t_data *data)
   double hit;
   double perwalldist;
   double side;
+  int m;
 
   pix = 0;
-  while(pix < Screen)
+  mlx_clear_window(data->mlx, data->win.ref);
+  while(pix < Width)
   {
     hit = 0;
-    ratio = ((double)pix - 64) / (64);
-    dirx = cos(data->player.angle) / 2 + cos(data->player.angle - 0.25) * ratio;
-    diry = sin(data->player.angle) / 2 + sin(data->player.angle - 0.25) * ratio;
+    ratio = ((double)pix - (Width / 2)) / (Width / 2);
+    dirx = cos(data->player.angle) + cos(data->player.angle - (M_PI * 60) / 180) * ratio;
+    diry = sin(data->player.angle) + sin(data->player.angle - (M_PI * 60) / 180) * ratio;
     mapx = floor(data->player.position.x);
     mapy = floor(data->player.position.y);
     deltadistx = sqrt(1+(diry *diry)/(dirx * dirx));
@@ -99,17 +101,41 @@ void ft_raycasting(t_data *data)
       if(data->map1.map[mapy][mapx] != '0')
         hit = 1;
     }
+    if (side ==0)
+    {
+        if (dirx > 0)
+          m = 2;
+        else
+          m = 3;
+    }
+    else
+    {
+      if (diry > 0)
+        m = 2;
+      else
+        m = 4;
+    }
     if (side == 0)
       perwalldist = ((float)mapx - data->player.position.x + (1 - stepx) / 2) / dirx;
     else
         perwalldist = ((float)mapy - data->player.position.y + (1 - stepy) / 2) / diry;
-    double y = 64 - 32 / perwalldist;
-    while(y < 64 + (32 / perwalldist))
+    double y = 0/perwalldist;
+    while(y < (Width / 2) - (Width / 4) / perwalldist)
     {
-      //  mlx_pixel_put(data->mlx, data->win.ref, pix, y, 0xFF0000);
-        mlx_put_image_to_window(data->mlx, data->win.ref, data->image[0].ref, pix, y);
-        y++;
+        mlx_put_image_to_window(data->mlx, data->win.ref, data->image[2].ref, pix , y);
+        y += 4;
     }
-    pix++;
+    y = (Width / 2) - (Width / 4) / perwalldist;
+    while(y < (Width / 2) + (Width / 4) / perwalldist)
+    {
+        mlx_put_image_to_window(data->mlx, data->win.ref, data->image[m].ref, pix , y);
+        y += 4;
+    }
+    while(y < Height)
+    {
+        mlx_put_image_to_window(data->mlx, data->win.ref, data->image[4].ref, pix , y);
+        y += 4;
+    }
+    pix+= 4;
   }
 }

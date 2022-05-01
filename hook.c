@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 12:58:03 by jperras           #+#    #+#             */
-/*   Updated: 2022/04/30 16:29:56 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/01 14:21:15 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void ft_move_player(t_data *data, double pos)
   double tmpy;
 
   tmpx = data->player.position.x + (data->player.speed * cos(data->player.angle)) * pos;
-  if ((tmpx < 7 && tmpx > 0) && data->map1.map[(int)floor(data->player.position.y)][(int)floor(tmpx)] == '0')
-    data->player.position.x = floor(tmpx);
+  if (data->map1.map[(int)floor(data->player.position.y)][(int)floor(tmpx)] == '0')
+    data->player.position.x = tmpx;
   tmpy = data->player.position.y + (data->player.speed * sin(data->player.angle)) * pos;
-  if ((tmpy < 7 && tmpy > 0) && data->map1.map[(int)floor(tmpy)][(int)floor(data->player.position.x)] == '0')
-    data->player.position.y = round(tmpy);
+  if (data->map1.map[(int)floor(tmpy)][(int)floor(data->player.position.x)] == '0')
+    data->player.position.y = tmpy;
 }
 
 int key(int key, t_data *data)
@@ -39,7 +39,7 @@ int key(int key, t_data *data)
     data->player.angle -= 2 * M_PI;
   if (data->player.angle <= - 2 * M_PI)
     data->player.angle += 2 * M_PI;
-  ft_put_background(data);
   ft_raycasting(data);
+  ft_put_background(data);
     return (0);
 }

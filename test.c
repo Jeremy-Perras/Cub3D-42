@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 09:02:29 by jperras           #+#    #+#             */
-/*   Updated: 2022/04/30 17:30:01 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/01 14:56:34 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void ft_init(t_data *data)
 {
   data->map1.map = data->map;
   data->player.position.x = 4;
-  data->player.position.y = 4;
-  data->player.speed = 1.0;
+  data->player.position.y = 6;
+  data->player.speed = 1;
   data->player.angle = 0;
-  data->player.rot_speed = M_PI / 2;
+  data->player.rot_speed = (30* M_PI) / 180;
 }
 
 int main(int ac, char **av)

@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 13:36:16 by jperras           #+#    #+#             */
-/*   Updated: 2022/04/30 17:20:35 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/01 14:22:29 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,12 @@ static t_image	ft_new_image(void *mlx, char *path)
 
 void ft_put_image(t_data *data)
 {
-	data->image = malloc(sizeof(t_image) * 3);
+	data->image = malloc(sizeof(t_image) * 5);
 	data->image[0] = ft_new_image(data->mlx, data->n);
 	data->image[1] = ft_new_image(data->mlx, data->s);
 	data->image[2] = ft_new_image(data->mlx, "image/Player.xpm");
+	data->image[3] = ft_new_image(data->mlx, "image/White.xpm");
+	data->image[4] = ft_new_image(data->mlx, "image/Red.xpm");
 }
 
 void	ft_put_background(t_data *data)
@@ -51,7 +53,7 @@ void	ft_put_background(t_data *data)
 
 	y = 0;
 	x = 0;
-	mlx_clear_window(data->mlx, data->win.ref);
+	
 	while (data->map[y])
 	{
 		x = 0;
@@ -59,12 +61,12 @@ void	ft_put_background(t_data *data)
 		{
 			if (data->map[y][x] == '1')
 			{
-				mlx_pixel_put(data->mlx, data->win.ref, x, y, 0x00FF0000);
+				    mlx_put_image_to_window(data->mlx, data->win.ref, data->image[4].ref, x * 4, y * 4);
 			}
 			else if (data->map[y][x] == '0')
-				mlx_pixel_put(data->mlx, data->win.ref, x, y, 0x00FFFFFF);
-			if(data->player.position.x == x && data->player.position.y == y)
-				mlx_pixel_put(data->mlx, data->win.ref, x, y, 0xFFFFFFFF);
+				    mlx_put_image_to_window(data->mlx, data->win.ref, data->image[3].ref, x *4, y * 4);
+			if((int)round(data->player.position.x) == x && (int)round(data->player.position.y) == y)
+				 mlx_put_image_to_window(data->mlx, data->win.ref, data->image[2].ref, x *4, y * 4);
 			x++;
 		}
 		y++;

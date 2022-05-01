@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 12:49:10 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/01 15:45:38 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/01 15:55:25 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ void ft_raycasting(t_data *data)
   {
     hit = 0;
     ratio = ((double)pix - (Width / 2)) / (Width / 2);
-    dirx = cos(data->player.angle) + cos(data->player.angle - (M_PI * 60) / 180) * ratio;
-    diry = sin(data->player.angle) + sin(data->player.angle - (M_PI * 60) / 180) * ratio;
+    dirx = cos(data->player.angle) / 2 + cos(data->player.angle - (M_PI * 60) / 180) * ratio;
+    diry = sin(data->player.angle) / 2  + sin(data->player.angle - (M_PI * 60) / 180) * ratio;
     mapx = floor(data->player.position.x);
     mapy = floor(data->player.position.y);
     deltadistx = sqrt(1+(diry *diry)/(dirx * dirx));

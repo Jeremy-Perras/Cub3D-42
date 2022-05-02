@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 11:33:56 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/05/02 11:38:38 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/05/02 11:54:22 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ t_data 	*ft_parse_map(char *map);
 void 	ft_texture(char *line, t_parse *parse, t_data *data);
 void  	exit_error(char *msg);
 void	ft_puthexa(int b, int *m, char *c);
+void ft_put_colors(t_data *data);
 void 	ft_check_map(char **map);
 int 	f_color(char *line, t_parse *parse, t_data *data);
 int 	c_color(char *line, t_parse *parse, t_data *data);

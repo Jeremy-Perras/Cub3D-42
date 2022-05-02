@@ -6,18 +6,32 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 09:02:29 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/01 14:56:34 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/02 10:11:16 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-void ft_init(t_data *data)
+static void ft_init(t_data *data)
 {
   data->map1.map = data->map;
-  data->player.position.x = 4;
-  data->player.position.y = 6;
   data->player.speed = 1;
+  // if(data->map[y][x] == 'N')
+  // {
+  //  data->player.angle = M_PI / 2;
+  // }
+  // if(data->map[y][x] == 'S')
+  // {
+  //  data->player.angle = - M_PI / 2;
+  // }
+  // if(data->map[y][x] == 'E')
+	// {
+  //    data->player.angle = 0;
+  // }
+  // if(data->map[y][x] == 'O')
+  // {
+  //    data->player.angle = M_PI;
+  // }
   data->player.angle = 0;
   data->player.rot_speed = (30* M_PI) / 180;
 }
@@ -39,10 +53,8 @@ int main(int ac, char **av)
   data->win = ft_windows(data->mlx, Width ,Height , "test");
   ft_init(data);
   ft_put_image(data);
-  ft_draw(data);
-  ft_put_background(data);
+  ft_put_background_init(data);
   ft_raycasting(data);
   mlx_key_hook(data->win.ref, key, data);
-
   mlx_loop(data->mlx);
 }

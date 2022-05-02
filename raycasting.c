@@ -6,136 +6,107 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 12:49:10 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/01 15:55:25 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/02 09:41:11 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include"cub.h"
-
-void ft_draw(t_data *data)
+static int  ft_choose_wall(int side, int dirx, int diry)
 {
-  int x;
-  int y;
+  int walltext;
 
-  x = 0;
-  y = 0;
-  while(x < 128)
+  if (side ==0)
   {
-    y = 0;
-    while(y < 64)
-    {
-        mlx_put_image_to_window(data->mlx, data->win.ref, data->image[1].ref, x, y);
-        y++;
-    }
-    x++;
+      if (dirx > 0)
+        walltext = 2;
+      else
+        walltext = 3;
   }
-
-
+  else
+  {
+    if (diry > 0)
+      walltext = 2;
+    else
+      walltext = 4;
+  }
+  return(walltext);
 }
+
+static void ft_init(t_data *data, int pix)
+{
+  data->ray.camx = ((double)pix - (Width / 2)) / (Width / 2);
+  data->ray.dirx = cos(data->player.angle) / 2 + cos(data->player.angle - (M_PI * 60) / 180) *   data->ray.camx;
+  data->ray.diry = sin(data->player.angle) / 2  + sin(data->player.angle - (M_PI * 60) / 180) *   data->ray.camx;
+  data->ray.mapx = floor(data->player.position.x);
+  data->ray.mapy = floor(data->player.position.y);
+  data->ray.deltadistx = sqrt(1 + (data->ray.diry * data->ray.diry) / (data->ray.dirx  * data->ray.dirx));
+  data->ray.deltadisty = sqrt(1 + (data->ray.dirx  * data->ray.dirx ) / (data->ray.diry * data->ray.diry));
+}
+
+static void ft_distinit(t_data *data)
+{
+  if(data->ray.dirx < 0)
+  {
+    data->ray.stepx = -1;
+    data->ray.sidedistx = (data->player.position.x - (double) data->ray.mapx) *   data->ray.deltadistx;
+  }
+  else
+  {
+    data->ray.stepx = 1;
+    data->ray.sidedistx = ((double)data->ray.mapx + 1 - data->player.position.x) *   data->ray.deltadistx;
+  }
+  if(data->ray.diry < 0)
+  {
+    data->ray.stepy = -1;
+    data->ray.sidedisty = (data->player.position.y - (double) data->ray.mapy) * data->ray.deltadisty;
+  }
+  else
+  {
+    data->ray.stepy = 1;
+    data->ray.sidedisty = ((double)data->ray.mapy + 1 - data->player.position.y ) * data->ray.deltadisty;
+  }
+}
+
+void ft_wall(t_data *data)
+{
+  if((data->ray.sidedistx >= 0 || data->ray.sidedisty <= 0) && data->ray.sidedistx < data->ray.sidedisty)
+  {
+    data->ray.sidedistx += data->ray.deltadistx;
+    data->ray.mapx +=   data->ray.stepx;
+    data->ray.side = 0;
+  }
+  else
+  {
+    data->ray.sidedisty += data->ray.deltadisty;
+    data->ray.mapy += data->ray.stepy;
+    data->ray.side = 1;
+  }
+}
+
 void ft_raycasting(t_data *data)
 {
-  double pix;
-  double ratio;
-  double dirx;
-  double diry;
-  int mapx;
-  int mapy;
-  double deltadistx;
-  double deltadisty;
-  double stepx;
-  double stepy;
-  double sidedistx;
-  double sidedisty;
+  int walltext;
+  int pix;
   double hit;
-  double perwalldist;
-  double side;
-  int m;
 
+  data->ray.camx = 0;
   pix = 0;
   mlx_clear_window(data->mlx, data->win.ref);
   while(pix < Width)
   {
     hit = 0;
-    ratio = ((double)pix - (Width / 2)) / (Width / 2);
-    dirx = cos(data->player.angle) / 2 + cos(data->player.angle - (M_PI * 60) / 180) * ratio;
-    diry = sin(data->player.angle) / 2  + sin(data->player.angle - (M_PI * 60) / 180) * ratio;
-    mapx = floor(data->player.position.x);
-    mapy = floor(data->player.position.y);
-    deltadistx = sqrt(1+(diry *diry)/(dirx * dirx));
-    deltadisty = sqrt(1+(dirx *dirx)/(diry * diry));
-    if(dirx < 0)
-    {
-      stepx = -1;
-      sidedistx = (data->player.position.x - (double)mapx) * deltadistx;
-    }
-    else
-    {
-      stepx = 1;
-      sidedistx = ((double)mapx + 1 - data->player.position.x ) * deltadistx;
-    }
-    if(diry < 0)
-    {
-      sidedisty = (data->player.position.y - (double)mapy) * deltadisty;
-      stepy = -1;
-    }
-    else
-    {
-      stepy = 1;
-      sidedisty = ((double)mapy + 1 - data->player.position.y ) * deltadisty;
-    }
+    ft_init(data, pix);
+    ft_distinit(data);
     while(hit == 0)
     {
-      if((sidedistx >= 0 || sidedisty <= 0) && sidedistx < sidedisty)
-      {
-        sidedistx += deltadistx;
-        mapx += stepx;
-        side = 0;
-      }
-      else
-      {
-        sidedisty += deltadisty;
-        mapy += stepy;
-        side = 1;
-      }
-      if(data->map1.map[mapy][mapx] != '0')
+      ft_wall(data);
+      if(data->map1.map[data->ray.mapy][data->ray.mapx] != '0')
         hit = 1;
     }
-    if (side ==0)
-    {
-        if (dirx > 0)
-          m = 2;
-        else
-          m = 3;
-    }
-    else
-    {
-      if (diry > 0)
-        m = 2;
-      else
-        m = 4;
-    }
-    if (side == 0)
-      perwalldist = ((float)mapx - data->player.position.x + (1 - stepx) / 2) / dirx;
-    else
-        perwalldist = ((float)mapy - data->player.position.y + (1 - stepy) / 2) / diry;
-    double y = 0/perwalldist;
-    while(y < (Width / 2) - (Width / 4) / perwalldist)
-    {
-        mlx_put_image_to_window(data->mlx, data->win.ref, data->image[2].ref, pix , y);
-        y += 4;
-    }
-    y = (Width / 2) - (Width / 4) / perwalldist;
-    while(y < (Width / 2) + (Width / 4) / perwalldist)
-    {
-        mlx_put_image_to_window(data->mlx, data->win.ref, data->image[m].ref, pix , y);
-        y += 4;
-    }
-    while(y < Height)
-    {
-        mlx_put_image_to_window(data->mlx, data->win.ref, data->image[4].ref, pix , y);
-        y += 4;
-    }
+    walltext = ft_choose_wall(data->ray.side, data->ray.dirx, data->ray.diry);
+    ft_distwall(data);
+    ft_draw(data ,pix, walltext);
     pix+= 4;
   }
 }

@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 13:36:16 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/01 14:22:29 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/02 09:56:13 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,34 @@ void ft_put_image(t_data *data)
 	data->image[4] = ft_new_image(data->mlx, "image/Red.xpm");
 }
 
+void	ft_put_background_init(t_data *data)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	x = 0;
+	while (data->map[y])
+	{
+		x = 0;
+		while (data->map[y][x])
+		{
+			if (data->map[y][x] == '1')
+				    mlx_put_image_to_window(data->mlx, data->win.ref, data->image[4].ref, x * 4, y * 4);
+			else if (data->map[y][x] == '0')
+				    mlx_put_image_to_window(data->mlx, data->win.ref, data->image[3].ref, x * 4, y * 4);
+			if(data->map[y][x] == 'N' || data->map[y][x] == 'S'||data->map[y][x] == 'E'|| data->map[y][x] == 'O')
+			{
+				data->player.position.x = x;
+			  data->player.position.y = y;
+				mlx_put_image_to_window(data->mlx, data->win.ref, data->image[2].ref, x * 4, y * 4);
+			}
+			x++;
+		}
+		y++;
+	}
+}
+
 void	ft_put_background(t_data *data)
 {
 	int	x;
@@ -53,7 +81,7 @@ void	ft_put_background(t_data *data)
 
 	y = 0;
 	x = 0;
-	
+
 	while (data->map[y])
 	{
 		x = 0;
@@ -64,7 +92,7 @@ void	ft_put_background(t_data *data)
 				    mlx_put_image_to_window(data->mlx, data->win.ref, data->image[4].ref, x * 4, y * 4);
 			}
 			else if (data->map[y][x] == '0')
-				    mlx_put_image_to_window(data->mlx, data->win.ref, data->image[3].ref, x *4, y * 4);
+				    mlx_put_image_to_window(data->mlx, data->win.ref, data->image[3].ref, x * 4, y * 4);
 			if((int)round(data->player.position.x) == x && (int)round(data->player.position.y) == y)
 				 mlx_put_image_to_window(data->mlx, data->win.ref, data->image[2].ref, x *4, y * 4);
 			x++;

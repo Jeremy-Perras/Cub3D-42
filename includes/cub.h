@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 11:33:56 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/05/01 15:56:35 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/02 09:53:43 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <mlx.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# define Height 250
-# define Width 250
+# define Height 500
+# define Width 500
 
 typedef struct t_map
 {
@@ -72,6 +72,24 @@ typedef struct s_parse
 	int		player;
 } t_parse;
 
+typedef struct s_raycasting
+{
+  double camx;
+  double ratio;
+  double dirx;
+  double diry;
+  int mapx;
+  int mapy;
+  double deltadistx;
+  double deltadisty;
+  double stepx;
+  double stepy;
+  double sidedistx;
+  double sidedisty;
+  double perwalldist;
+  double side;
+} t_raycasting;
+
 typedef struct s_data
 {
 	char	*n;
@@ -90,6 +108,7 @@ typedef struct s_data
 	t_image *image;
 	t_map 	map1;
 	t_player player;
+  t_raycasting ray;
 } t_data;
 
 t_data 	*ft_parse_map(char *map);
@@ -103,13 +122,20 @@ int 	c_color(char *line, t_parse *parse, t_data *data);
 */
 t_win   ft_windows(void *mlx, int widht, int height, char *title);
 void    ft_put_background(t_data *data);
+void	ft_put_background_init(t_data *data);
 void    ft_put_image(t_data *data);
-void    ft_draw(t_data *data);
 /*
 * hook.c
 */
 int      key(int key, t_data *data);
+/*
+* recasting.c
+*/
+
 void ft_raycasting(t_data *data);
-
-
+/*
+* recasting2.c
+*/
+void ft_draw(t_data *data, int pix, int walltext);
+void ft_distwall(t_data *data);
 #endif

@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 11:33:56 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/05/02 10:29:55 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/05/02 10:46:27 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ typedef struct s_raycasting
   double sidedisty;
   double perwalldist;
   double side;
+  double colorfloor;
+  double colorcelling;
 } t_raycasting;
 
 typedef struct s_data
@@ -139,4 +141,5 @@ void ft_raycasting(t_data *data);
 */
 void ft_draw(t_data *data, int pix, int walltext);
 void ft_distwall(t_data *data);
+int	create_trgb(int t, int r, int g, int b);
 #endif

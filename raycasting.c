@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 12:49:10 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/02 09:41:11 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/02 10:46:49 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@ static int  ft_choose_wall(int side, int dirx, int diry)
   if (side ==0)
   {
       if (dirx > 0)
-        walltext = 2;
+        walltext = 5;
       else
-        walltext = 3;
+        walltext = 6;
   }
   else
   {
     if (diry > 0)
-      walltext = 2;
+      walltext = 7;
     else
-      walltext = 4;
+      walltext = 8;
   }
   return(walltext);
 }
@@ -107,6 +107,6 @@ void ft_raycasting(t_data *data)
     walltext = ft_choose_wall(data->ray.side, data->ray.dirx, data->ray.diry);
     ft_distwall(data);
     ft_draw(data ,pix, walltext);
-    pix+= 4;
+    pix+= 20;
   }
 }

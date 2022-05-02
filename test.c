@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 09:02:29 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/02 10:11:16 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/02 10:36:04 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,26 @@ static void ft_init(t_data *data)
 {
   data->map1.map = data->map;
   data->player.speed = 1;
-  // if(data->map[y][x] == 'N')
-  // {
-  //  data->player.angle = M_PI / 2;
-  // }
-  // if(data->map[y][x] == 'S')
-  // {
-  //  data->player.angle = - M_PI / 2;
-  // }
-  // if(data->map[y][x] == 'E')
-	// {
-  //    data->player.angle = 0;
-  // }
-  // if(data->map[y][x] == 'O')
-  // {
-  //    data->player.angle = M_PI;
-  // }
+  if(data->player_orientation == 'N')
+  {
+   data->player.angle = M_PI / 2;
+  }
+  if(data->player_orientation == 'S')
+  {
+   data->player.angle = - M_PI / 2;
+  }
+  if(data->player_orientation == 'E')
+	{
+     data->player.angle = 0;
+  }
+  if(data->player_orientation == 'O')
+  {
+     data->player.angle = M_PI;
+  }
   data->player.angle = 0;
   data->player.rot_speed = (30* M_PI) / 180;
+  data->ray.colorfloor = create_trgb(0,  data->f_r, data->f_g,  data->f_b);
+  data->ray.colorcelling =  create_trgb(0,  data->c_r, data->c_g,  data->c_b);
 }
 
 int main(int ac, char **av)

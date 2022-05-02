@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 11:33:56 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/05/02 09:53:43 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/02 10:29:55 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ typedef struct s_data
 	int		f_b;
 	char 	**map;
 	void 	*mlx;
+	char 	player_orientation;
 	t_win 	win;
 	t_image *image;
 	t_map 	map1;

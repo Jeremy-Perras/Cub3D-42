@@ -6,13 +6,13 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 11:33:33 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/04/30 14:45:19 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/05/02 10:29:17 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-static void ft_check_line(char *line, t_parse *parse)
+static void ft_check_line(char *line, t_parse *parse, t_data *data)
 {
 	char caracters[] = "01NSEW \t";
 	char player[] = "NSEW";
@@ -21,18 +21,21 @@ static void ft_check_line(char *line, t_parse *parse)
 	while (line[++i])
 	{
 		if (ft_strchr(player, line[i]))
+		{
 			parse->player++;
+			data->player_orientation = line[i];
+		}
 		if (!ft_strchr(caracters, line[i]) || parse->player > 1)
 			exit_error("Error: Unexpected catacter");
 	}
 }
 
-static void ft_lab(char *line, t_parse *parse)
+static void ft_lab(char *line, t_parse *parse, t_data *data)
 {
 	static int x = 0;
 	parse->count = 1;
 	line[ft_strlen(line) - 1] = '\0';
- 	ft_check_line(line, parse);
+ 	ft_check_line(line, parse, data);
 	parse->map[x] = ft_strdup(line);
 	x++;
 	parse->map[x] = NULL;
@@ -41,7 +44,7 @@ static void ft_lab(char *line, t_parse *parse)
 static void ft_parse_line(char *line, t_parse *parse, t_data *data)
 {
 	if (parse->flag == 6)
-		ft_lab(line, parse);
+		ft_lab(line, parse, data);
 	else
 		ft_texture(line, parse, data);
 }
@@ -101,8 +104,8 @@ t_data *ft_parse_map(char *map)
 		line = get_next_line(fd);
 	}
 	if (parse->flag != 6 || !parse->n || !parse->s || !parse->e
-			|| !parse->w || !parse->f || !parse->c)
-		exit_error("Textures missing in map");
+			|| !parse->w || !parse->f || !parse->c || parse->player != 1)
+		exit_error("Invalid texture or player");
 	ft_check_map(parse->map);
 	data->map = parse->map;
 	return (data);

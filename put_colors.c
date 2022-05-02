@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 11:37:18 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/05/02 12:09:17 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/05/02 12:14:54 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void ft_put_colors(t_data *data)
 	while (i < 5)
 	{
 		ft_putstr_fd("\"                                                  \"", fd);
+		ft_putstr_fd(",", fd);
 		i++;
 	}
 	close(fd);
@@ -59,6 +60,7 @@ void ft_put_colors(t_data *data)
 	while (i < 5)
 	{
 		ft_putstr_fd("\"                                                  \"", fd2);
+		ft_putstr_fd(",", fd2);
 		i++;
 	}
 	close(fd2);

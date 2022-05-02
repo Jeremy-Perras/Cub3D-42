@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 11:33:33 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/05/02 10:29:17 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/05/02 11:37:04 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,6 @@ t_data *ft_parse_map(char *map)
 		exit_error("Invalid texture or player");
 	ft_check_map(parse->map);
 	data->map = parse->map;
+	ft_put_colors(data);
 	return (data);
 }

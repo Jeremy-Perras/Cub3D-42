@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 11:37:18 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/05/02 12:14:54 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/05/02 12:22:32 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,28 +40,30 @@ void ft_put_colors(t_data *data)
 	fd2 = open("./image/c.xpm", O_WRONLY);
 	if (fd < 0 || fd2 < 0)
 		exit_error("floor error");
-	ft_putstr_fd("static char *floor", fd);
-	ft_putstr_fd("SbUe[] = {\"5 5 1 1 \", \"  c #", fd);
+	ft_putstr_fd("static char *floor[] = {\"5 5 1 1 \", \"  c #", fd);
 	ft_putstr_fd(floor, fd);
 	ft_putstr_fd(",", fd);
 	int i = 0;
 	while (i < 5)
 	{
 		ft_putstr_fd("\"                                                  \"", fd);
-		ft_putstr_fd(",", fd);
+		if (i != 4)
+			ft_putstr_fd(",\n", fd);
 		i++;
 	}
+	//ft_putstr_fd("};", fd);
 	close(fd);
-	ft_putstr_fd("static char *ceiling", fd2);
-	ft_putstr_fd("SbUe[] = {\"5 5 1 1 \", \"  c #", fd2);
+	ft_putstr_fd("static char *ceiling = {\"5 5 1 1 \", \"  c #", fd2);
 	ft_putstr_fd(ceiling, fd2);
 	ft_putstr_fd(",", fd2);
 	i = 0;
 	while (i < 5)
 	{
 		ft_putstr_fd("\"                                                  \"", fd2);
-		ft_putstr_fd(",", fd2);
+		if (i != 4)
+			ft_putstr_fd(",\n", fd2);
 		i++;
 	}
+	//ft_putstr_fd("};", fd2);
 	close(fd2);
 }

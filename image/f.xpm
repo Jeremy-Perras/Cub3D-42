@@ -1,1 +1,5 @@
-static char *floorSbUe[] = {"5 5 1 1 ", "  c #B87127,"                                                  ""                                                  ""                                                  ""                                                  ""                                                  "
+static char *floor[] = {"5 5 1 1 ", "  c #B87127,"                                                  ",
+"                                                  ",
+"                                                  ",
+"                                                  ",
+"                                                  "}; "};

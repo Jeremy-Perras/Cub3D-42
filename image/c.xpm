@@ -1,1 +1,5 @@
-static char *ceilingSbUe[] = {"5 5 1 1 ", "  c #33C6E3,"                                                  ""                                                  ""                                                  ""                                                  ""                                                  "
+static char *ceiling = {"5 5 1 1 ", "  c #33C6E3,"                                                  ",
+"                                                  ",
+"                                                  ",
+"                                                  ",
+"                                                  "};   "};

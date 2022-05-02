@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 11:37:18 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/05/02 12:37:14 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/05/02 12:44:48 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void ft_put_colors(t_data *data)
 		exit_error("floor error");
 	ft_putstr_fd("static char *thor[] = {\"5 5 1 1 \", \"  c #", fd);
 	ft_putstr_fd(floor, fd);
-	ft_putstr_fd(",", fd);
+	ft_putstr_fd("\",\n", fd);
 	int i = -1;
 	while (++i < 5)
 	{
@@ -54,7 +54,7 @@ void ft_put_colors(t_data *data)
 	close(fd);
 	ft_putstr_fd("static char *ceiling = {\"5 5 1 1 \", \"  c #", fd2);
 	ft_putstr_fd(ceiling, fd2);
-	ft_putstr_fd(",\",", fd2);
+	ft_putstr_fd("\",\n", fd2);
 	i = -1;
 	while (++i < 5)
 	{

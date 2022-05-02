@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 13:36:16 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/02 11:22:13 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/02 12:10:01 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ void ft_put_image(t_data *data)
 	data->image[2] = ft_new_image(data->mlx, "image/Player.xpm");
 	data->image[3] = ft_new_image(data->mlx, "image/White.xpm");
 	data->image[4] = ft_new_image(data->mlx, "image/Red.xpm");
-	data->image[5] = ft_new_image(data->mlx, "image/203.xpm");
-	data->image[6] = ft_new_image(data->mlx, "image/204.xpm");
-	data->image[7] = ft_new_image(data->mlx, "image/51.xpm");
-	data->image[8] = ft_new_image(data->mlx, "image/52.xpm");
-	data->image[9] = ft_new_image(data->mlx, "image/p.xpm");
-
+	data->image[5] = ft_new_image(data->mlx, data->n);
+	data->image[6] = ft_new_image(data->mlx, data->s);
+	data->image[7] = ft_new_image(data->mlx, data->e);
+	data->image[8] = ft_new_image(data->mlx, data->w);
+	data->image[9] = ft_new_image(data->mlx, "image/c.xpm");
+	data->image[10] = ft_new_image(data->mlx, "image/f.xpm");
 }
 
 void	ft_put_background_init(t_data *data)

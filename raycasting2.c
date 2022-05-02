@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:30:43 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/02 11:22:42 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/02 12:06:09 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ void ft_draw(t_data *data, int pix, int walltext)
   while(y < (Width / 2) - (Width / 4) / data->ray.perwalldist)
   {
     mlx_put_image_to_window(data->mlx, data->win.ref, data->image[9].ref, pix , y);
-      y += 50;
+      y += 5;
   }
+  y = (Width / 2) - (Width / 4) / data->ray.perwalldist ;
   while(y < (Width / 2) + (Width / 4) / data->ray.perwalldist)
   {
       mlx_put_image_to_window(data->mlx, data->win.ref, data->image[walltext].ref, pix , y);
@@ -35,7 +36,7 @@ void ft_draw(t_data *data, int pix, int walltext)
   while(y < Height)
   {
       mlx_put_image_to_window(data->mlx, data->win.ref, data->image[9].ref, pix , y);
-      y += 50;
+      y += 5;
   }
 }
 

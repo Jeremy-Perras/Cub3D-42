@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 12:49:10 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/02 10:46:49 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/02 11:24:53 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ static int  ft_choose_wall(int side, int dirx, int diry)
 static void ft_init(t_data *data, int pix)
 {
   data->ray.camx = ((double)pix - (Width / 2)) / (Width / 2);
-  data->ray.dirx = cos(data->player.angle) / 2 + cos(data->player.angle - (M_PI * 60) / 180) *   data->ray.camx;
-  data->ray.diry = sin(data->player.angle) / 2  + sin(data->player.angle - (M_PI * 60) / 180) *   data->ray.camx;
+  data->ray.dirx = cos(data->player.angle) / 2 + cos(data->player.angle - (M_PI * 90) / 180) *   data->ray.camx;
+  data->ray.diry = sin(data->player.angle) / 2  + sin(data->player.angle - (M_PI * 90) / 180) *   data->ray.camx;
   data->ray.mapx = floor(data->player.position.x);
   data->ray.mapy = floor(data->player.position.y);
   data->ray.deltadistx = sqrt(1 + (data->ray.diry * data->ray.diry) / (data->ray.dirx  * data->ray.dirx));
@@ -107,6 +107,6 @@ void ft_raycasting(t_data *data)
     walltext = ft_choose_wall(data->ray.side, data->ray.dirx, data->ray.diry);
     ft_distwall(data);
     ft_draw(data ,pix, walltext);
-    pix+= 20;
+    pix+= 5;
   }
 }

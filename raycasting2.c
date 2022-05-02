@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:30:43 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/02 10:46:35 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/02 11:22:42 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,28 +24,18 @@ void ft_draw(t_data *data, int pix, int walltext)
   y =  0 / data->ray.perwalldist;
   while(y < (Width / 2) - (Width / 4) / data->ray.perwalldist)
   {
-    while(x < end)
-    {
-      mlx_pixel_put(data->mlx, data->win.ref,  x, y, data->ray.colorcelling);
-      x++;
-    }
-      x = pix;
-      y += 1;
+    mlx_put_image_to_window(data->mlx, data->win.ref, data->image[9].ref, pix , y);
+      y += 50;
   }
   while(y < (Width / 2) + (Width / 4) / data->ray.perwalldist)
   {
       mlx_put_image_to_window(data->mlx, data->win.ref, data->image[walltext].ref, pix , y);
-      y += 20;
+      y += 5;
   }
   while(y < Height)
   {
-    while(x < end)
-    {
-      mlx_pixel_put(data->mlx, data->win.ref,  x, y, data->ray.colorfloor);
-      x++;
-    }
-      x = pix;
-      y += 1;
+      mlx_put_image_to_window(data->mlx, data->win.ref, data->image[9].ref, pix , y);
+      y += 50;
   }
 }
 

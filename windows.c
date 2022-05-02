@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 13:36:16 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/02 11:06:47 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/02 11:22:13 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,18 @@ static t_image	ft_new_image(void *mlx, char *path)
 
 void ft_put_image(t_data *data)
 {
-	data->image = malloc(sizeof(t_image) * 9);
+	data->image = malloc(sizeof(t_image) * 11);
 	data->image[0] = ft_new_image(data->mlx, data->n);
 	data->image[1] = ft_new_image(data->mlx, data->s);
 	data->image[2] = ft_new_image(data->mlx, "image/Player.xpm");
 	data->image[3] = ft_new_image(data->mlx, "image/White.xpm");
 	data->image[4] = ft_new_image(data->mlx, "image/Red.xpm");
-	data->image[5] = ft_new_image(data->mlx, "image/201.xpm");
-	data->image[6] = ft_new_image(data->mlx, "image/202.xpm");
-	data->image[7] = ft_new_image(data->mlx, "image/203.xpm");
-	data->image[8] = ft_new_image(data->mlx, "image/204.xpm");
+	data->image[5] = ft_new_image(data->mlx, "image/203.xpm");
+	data->image[6] = ft_new_image(data->mlx, "image/204.xpm");
+	data->image[7] = ft_new_image(data->mlx, "image/51.xpm");
+	data->image[8] = ft_new_image(data->mlx, "image/52.xpm");
+	data->image[9] = ft_new_image(data->mlx, "image/p.xpm");
+
 }
 
 void	ft_put_background_init(t_data *data)

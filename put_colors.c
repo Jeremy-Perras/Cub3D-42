@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 11:37:18 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/05/02 12:44:48 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/05/02 14:29:58 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,27 +40,37 @@ void ft_put_colors(t_data *data)
 	fd2 = open("./image/c.xpm", O_WRONLY);
 	if (fd < 0 || fd2 < 0)
 		exit_error("floor error");
-	ft_putstr_fd("static char *thor[] = {\"5 5 1 1 \", \"  c #", fd);
+	ft_putstr_fd("static char *thor[] = {\"500 500 1 1 \", \"  c #", fd);
 	ft_putstr_fd(floor, fd);
 	ft_putstr_fd("\",\n", fd);
 	int i = -1;
-	while (++i < 5)
+	int j = -1;
+	while (++i < 500)
 	{
-		ft_putstr_fd("\"     \"", fd);
-		if (i < 4)
-			ft_putstr_fd(",\n", fd);
+		ft_putstr_fd("\"",fd);
+		j = -1;
+		while (++j < 500)
+				ft_putstr_fd(" ", fd);
+		ft_putstr_fd("\"", fd);
+		if (i < 499)
+		ft_putstr_fd(",\n", fd);
 	}
 	ft_putstr_fd("};", fd);
 	close(fd);
-	ft_putstr_fd("static char *ceiling = {\"5 5 1 1 \", \"  c #", fd2);
+	ft_putstr_fd("static char *ceiling = {\"500 500 1 1 \", \"  c #", fd2);
 	ft_putstr_fd(ceiling, fd2);
 	ft_putstr_fd("\",\n", fd2);
 	i = -1;
-	while (++i < 5)
+	j = -1;
+	while (++i < 500)
 	{
-		ft_putstr_fd("\"     \"", fd2);
-		if (i < 4)
-			ft_putstr_fd(",\n", fd2);
+		ft_putstr_fd("\"",fd2);
+		j = -1;
+		while (++j < 500)
+				ft_putstr_fd(" ", fd2);
+		ft_putstr_fd("\"", fd2);
+		if (i < 499)
+		ft_putstr_fd(",\n", fd2);
 	}
 	ft_putstr_fd("};", fd2);
 	close(fd2);

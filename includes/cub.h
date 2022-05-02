@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 11:33:56 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/05/02 11:54:22 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/05/02 15:02:32 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 #include "../libft/libft.h"
 # include <math.h>
 # include <stdio.h>
-# include <mlx.h>
+# include "../minilibx/mlx.h"
 # include <stdlib.h>
 # include <fcntl.h>
-# define Height 500
-# define Width 500
+# define Height 1000
+# define Width 1000
 
 typedef struct t_map
 {
@@ -51,6 +51,11 @@ typedef struct s_image
 {
   void *ref;
   t_vector size;
+  char	*addr;
+  void *image;
+  int		bits_per_pixel;
+  int		line_length;
+  int		endian;
 } t_image;
 
 typedef struct s_window
@@ -58,6 +63,7 @@ typedef struct s_window
   void *ref;
   t_vector size;
 } t_win;
+
 typedef struct s_parse
 {
 	char	**map;
@@ -129,6 +135,7 @@ t_win   ft_windows(void *mlx, int widht, int height, char *title);
 void    ft_put_background(t_data *data);
 void	ft_put_background_init(t_data *data);
 void    ft_put_image(t_data *data);
+void ft_image2(t_data *data);
 /*
 * hook.c
 */
@@ -144,4 +151,6 @@ void ft_raycasting(t_data *data);
 void ft_draw(t_data *data, int pix, int walltext);
 void ft_distwall(t_data *data);
 int	create_trgb(int t, int r, int g, int b);
+void ft_draw_background(t_data *data);
+void ft_image2(t_data *data);
 #endif

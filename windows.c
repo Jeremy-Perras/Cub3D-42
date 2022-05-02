@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 13:36:16 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/02 12:10:01 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/02 15:29:38 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static t_image	ft_new_image(void *mlx, char *path)
 
 void ft_put_image(t_data *data)
 {
-	data->image = malloc(sizeof(t_image) * 11);
+	data->image = malloc(sizeof(t_image) * 12);
 	data->image[0] = ft_new_image(data->mlx, data->n);
 	data->image[1] = ft_new_image(data->mlx, data->s);
 	data->image[2] = ft_new_image(data->mlx, "image/Player.xpm");
@@ -51,6 +51,7 @@ void ft_put_image(t_data *data)
 	data->image[9] = ft_new_image(data->mlx, "image/c.xpm");
 	data->image[10] = ft_new_image(data->mlx, "image/f.xpm");
 }
+
 
 void	ft_put_background_init(t_data *data)
 {

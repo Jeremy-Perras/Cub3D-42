@@ -6,11 +6,34 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:30:43 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/02 12:40:54 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/05/02 16:20:39 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+void ft_draw_background(t_data *data)
+{
+  double y;
+  double x;
+
+  x = 0;
+  while (x < Width)
+  {
+    y = 0;
+    while(y < 500)
+    {
+      mlx_put_image_to_window(data->mlx, data->win.ref, data->image[11].image, x, y);
+        y += 500;
+    }
+    while(y < Height)
+  {
+        mlx_put_image_to_window(data->mlx, data->win.ref, data->image[9].ref, x, y);
+        y += 500;
+      }
+      x += 500;
+
+    }
+}
 
 void ft_draw(t_data *data, int pix, int walltext)
 {
@@ -22,21 +45,11 @@ void ft_draw(t_data *data, int pix, int walltext)
   x = pix;
   end = pix + 50;
   y =  0 / data->ray.perwalldist;
-  while(y < (Width / 2) - (Width / 4) / data->ray.perwalldist)
-  {
-    mlx_put_image_to_window(data->mlx, data->win.ref, data->image[10].ref, pix , y);
-      y += 5;
-  }
   y = (Width / 2) - (Width / 4) / data->ray.perwalldist ;
   while(y < (Width / 2) + (Width / 4) / data->ray.perwalldist)
   {
       mlx_put_image_to_window(data->mlx, data->win.ref, data->image[walltext].ref, pix , y);
-      y += 5;
-  }
-  while(y < Height)
-  {
-      mlx_put_image_to_window(data->mlx, data->win.ref, data->image[9].ref, pix , y);
-      y += 5;
+      y += 25;
   }
 }
 

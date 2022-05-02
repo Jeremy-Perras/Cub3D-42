@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 12:49:10 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/02 11:24:53 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/02 15:45:46 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ static void ft_init(t_data *data, int pix)
   data->ray.deltadistx = sqrt(1 + (data->ray.diry * data->ray.diry) / (data->ray.dirx  * data->ray.dirx));
   data->ray.deltadisty = sqrt(1 + (data->ray.dirx  * data->ray.dirx ) / (data->ray.diry * data->ray.diry));
 }
-
 static void ft_distinit(t_data *data)
 {
   if(data->ray.dirx < 0)
@@ -93,6 +92,9 @@ void ft_raycasting(t_data *data)
   data->ray.camx = 0;
   pix = 0;
   mlx_clear_window(data->mlx, data->win.ref);
+
+  ft_draw_background(data);
+
   while(pix < Width)
   {
     hit = 0;
@@ -107,6 +109,6 @@ void ft_raycasting(t_data *data)
     walltext = ft_choose_wall(data->ray.side, data->ray.dirx, data->ray.diry);
     ft_distwall(data);
     ft_draw(data ,pix, walltext);
-    pix+= 5;
+    pix+= 25;
   }
 }

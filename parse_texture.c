@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 13:50:32 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/04/30 14:47:47 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/05/03 17:47:08 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ static int w_texture(char *line, t_parse *parse, t_data *data)
 	path = ft_split(line, ' ');
 	path[1][ft_strlen(path[1]) - 1] = '\0';
 	fd = open(path[1], O_RDONLY);
+	printf("%s\n", path[1]);
 	if (fd < 0 || path[2])
 		exit_error("Error: West texture's path cannot be found");
 	close(fd);

@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 13:36:16 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/03 14:27:52 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/03 17:08:48 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void ft_put_image(t_data *data)
 	&(data->image[7].line_length), &(data->image[7].endian));
 	data->image[8].addr = mlx_get_data_addr(data->image[8].ref, &(data->image[8].bits_per_pixel),
 	&(data->image[8].line_length), &(data->image[8].endian));
-	data->image[20].image = mlx_new_image(data->mlx, 1000, 1000);
+	data->image[20].image = mlx_new_image(data->mlx, Width, Height);
 	data->image[20].addr = mlx_get_data_addr(data->image[20].image, &(data->image[20].bits_per_pixel),
 	&(data->image[20].line_length), &(data->image[20].endian));
 	data->image[12].image = mlx_new_image(data->mlx, 500, 500);

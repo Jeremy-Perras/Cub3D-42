@@ -1,11 +1,11 @@
 
-WE image/N.xpm
-NO image/S.xpm
+WE ./image/N.xpm
+NO ./image/S.xpm
 
 
-SO image/E.xpm
+SO ./image/E.xpm
 
-EA image/O.xpm
+EA ./image/O.xpm
 
 
 F 184,113,39

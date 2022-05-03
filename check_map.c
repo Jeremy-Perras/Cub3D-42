@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 10:55:54 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/04/25 16:30:10 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/05/03 18:00:06 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,12 @@ static void ft_check_horizontal(char *line)
 		if (line[i] == ' ' || line[i] == '\t')
 		{
 			if (line[i - 1] == '0' || line[i + 1] == '0')
+			{
+				printf("%s\n", line);
+				printf("%c %c %c\n", line[i - 1], line[i], line[i + 1]);
+				printf("%d\n", i);
 				exit_error("Invalid map: Inner walls must be closed");
+			}
 		}
 		i++;
 	}
@@ -88,8 +93,7 @@ static void ft_check_vertical(char **map)
 			if (map[i][j] && (map[i][j] == ' ' || map[i][j] == '\t'))
 			{
 				if (map[i - 1][j] == '0' || map[i + 1][j] == '0')
-					exit_error("Invalid map: Inner walls must be closed");
-
+					exit_error("Invalid map: Inner walls must be closed2");
 			}
 			i++;
 		}

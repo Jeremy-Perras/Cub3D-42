@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 09:02:29 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/02 16:04:52 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/03 16:16:24 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ static void ft_init(t_data *data)
   {
      data->player.angle = M_PI;
   }
-  data->player.angle = 0;
   data->player.rot_speed = (30 * M_PI) / 180;
   data->ray.colorfloor = create_trgb(0,  data->f_r, data->f_g,  data->f_b);
   data->ray.colorcelling =  create_trgb(0,  data->c_r, data->c_g,  data->c_b);
@@ -55,7 +54,7 @@ int main(int ac, char **av)
   data->win = ft_windows(data->mlx, Width ,Height , "test");
   ft_init(data);
   ft_put_image(data);
-  ft_image2(data);
+  // ft_image2(data);
   ft_put_background_init(data);
   ft_raycasting(data);
   mlx_key_hook(data->win.ref, key, data);

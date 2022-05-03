@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:30:43 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/02 16:20:39 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/03 14:34:25 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,28 @@ void ft_draw_background(t_data *data)
 {
   double y;
   double x;
+  int color;
 
   x = 0;
   while (x < Width)
   {
     y = 0;
-    while(y < 500)
+    while(y < Height / 2)
     {
-      mlx_put_image_to_window(data->mlx, data->win.ref, data->image[11].image, x, y);
-        y += 500;
+	     color = create_trgb(0, data->c_r, data->c_g, data->c_b);
+       		data->im = 20;
+        my_mlx_pixel_put(data, x,  y, color);
+
+        y ++;
     }
     while(y < Height)
   {
-        mlx_put_image_to_window(data->mlx, data->win.ref, data->image[9].ref, x, y);
-        y += 500;
+        color = create_trgb(0, data->f_r, data->f_g, data->f_b);
+        		data->im = 20;
+        my_mlx_pixel_put(data, x,  y, color);
+        y ++ ;
       }
-      x += 500;
+      x++;
 
     }
 }
@@ -40,6 +46,8 @@ void ft_draw(t_data *data, int pix, int walltext)
   double y;
   int x;
   int end;
+  (void) walltext;
+  int color;
 
 
   x = pix;
@@ -48,9 +56,15 @@ void ft_draw(t_data *data, int pix, int walltext)
   y = (Width / 2) - (Width / 4) / data->ray.perwalldist ;
   while(y < (Width / 2) + (Width / 4) / data->ray.perwalldist)
   {
-      mlx_put_image_to_window(data->mlx, data->win.ref, data->image[walltext].ref, pix , y);
-      y += 25;
+    color = (int)(data->image[walltext].image +
+		data->image[walltext].line_length * (int)(50 - (int)pix % 50) +
+		(int)(50 - (int)y % 50) * (data->image[walltext].bits_per_pixel / 8));
+      // color = create_trgb(0, 0,255, 0);
+        data->im = 20;
+        my_mlx_pixel_put(data, x,  y, color);
+      y ++;
   }
+
 }
 
 void ft_distwall(t_data *data)

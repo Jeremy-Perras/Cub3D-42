@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 12:49:10 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/02 15:45:46 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/03 16:18:40 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,9 @@ void ft_raycasting(t_data *data)
 
   data->ray.camx = 0;
   pix = 0;
+
   mlx_clear_window(data->mlx, data->win.ref);
-
   ft_draw_background(data);
-
   while(pix < Width)
   {
     hit = 0;
@@ -109,6 +108,7 @@ void ft_raycasting(t_data *data)
     walltext = ft_choose_wall(data->ray.side, data->ray.dirx, data->ray.diry);
     ft_distwall(data);
     ft_draw(data ,pix, walltext);
-    pix+= 25;
+    pix++;
   }
+  mlx_put_image_to_window(data->mlx, data->win.ref, data->image[20].image, 0, 0);
 }

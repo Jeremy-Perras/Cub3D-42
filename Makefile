@@ -6,14 +6,14 @@
 #    By: jperras <jperras@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/22 08:57:03 by jperras           #+#    #+#              #
-#    Updated: 2022/05/02 15:01:35 by jperras          ###   ########.fr        #
+#    Updated: 2022/05/03 09:21:54 by jperras          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 
 SRCS = test.c windows.c hook.c raycasting.c parse.c parse_texture.c utils.c check_map.c floor_ceiling_color.c raycasting2.c put_colors.c \
-				test2.c
+				image2.c teste2.c
 INCLUDES = -I./includes
 
 OBJS = $(SRCS:.c=.o)

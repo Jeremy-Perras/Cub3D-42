@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 13:36:16 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/02 15:29:38 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/03 14:27:52 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static t_image	ft_new_image(void *mlx, char *path)
 
 void ft_put_image(t_data *data)
 {
-	data->image = malloc(sizeof(t_image) * 12);
+	data->image = malloc(sizeof(t_image) * 21);
 	data->image[0] = ft_new_image(data->mlx, data->n);
 	data->image[1] = ft_new_image(data->mlx, data->s);
 	data->image[2] = ft_new_image(data->mlx, "image/Player.xpm");
@@ -50,6 +50,24 @@ void ft_put_image(t_data *data)
 	data->image[8] = ft_new_image(data->mlx, data->w);
 	data->image[9] = ft_new_image(data->mlx, "image/c.xpm");
 	data->image[10] = ft_new_image(data->mlx, "image/f.xpm");
+	data->image[19] = ft_new_image(data->mlx, "image/f.xpm");
+	data->image[5].addr = mlx_get_data_addr(data->image[8].ref, &(data->image[5].bits_per_pixel),
+	&(data->image[5].line_length), &(data->image[5].endian));
+	data->image[6].addr = mlx_get_data_addr(data->image[8].ref, &(data->image[6].bits_per_pixel),
+	&(data->image[6].line_length), &(data->image[6].endian));
+	data->image[7].addr = mlx_get_data_addr(data->image[7].ref, &(data->image[7].bits_per_pixel),
+	&(data->image[7].line_length), &(data->image[7].endian));
+	data->image[8].addr = mlx_get_data_addr(data->image[8].ref, &(data->image[8].bits_per_pixel),
+	&(data->image[8].line_length), &(data->image[8].endian));
+	data->image[20].image = mlx_new_image(data->mlx, 1000, 1000);
+	data->image[20].addr = mlx_get_data_addr(data->image[20].image, &(data->image[20].bits_per_pixel),
+	&(data->image[20].line_length), &(data->image[20].endian));
+	data->image[12].image = mlx_new_image(data->mlx, 500, 500);
+	data->image[12].addr = mlx_get_data_addr(data->image[12].image, &(data->image[12].bits_per_pixel),
+	&(data->image[12].line_length), &(data->image[12].endian));
+	data->image[11].image = mlx_new_image(data->mlx, 500, 500);
+	data->image[11].addr = mlx_get_data_addr(data->image[11].image, &(data->image[11].bits_per_pixel),
+	&(data->image[11].line_length), &(data->image[11].endian));
 }
 
 

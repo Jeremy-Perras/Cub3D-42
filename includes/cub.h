@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 11:33:56 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/05/02 15:02:32 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/03 11:47:31 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ typedef struct s_raycasting
 
 typedef struct s_data
 {
+  int im;
 	char	*n;
 	char	*s;
 	char	*e;
@@ -153,4 +154,5 @@ void ft_distwall(t_data *data);
 int	create_trgb(int t, int r, int g, int b);
 void ft_draw_background(t_data *data);
 void ft_image2(t_data *data);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 #endif

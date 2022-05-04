@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:30:43 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/03 18:01:27 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/04 09:34:11 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ void ft_draw_background(t_data *data)
 {
   double y;
   double x;
-  int color;
+  unsigned int color;
 
   x = 0;
   while (x < Width)
@@ -44,27 +44,23 @@ void ft_draw_background(t_data *data)
 void ft_draw(t_data *data, int pix, int walltext)
 {
   double y;
-  int x;
-  int end;
-  (void) walltext;
-  int color;
+  unsigned int color;
+  char	*dst;
 
 
-  x = pix;
-  end = pix + 50;
+
   y =  0 / data->ray.perwalldist;
   y = (Height / 2) - (Height / 4) / data->ray.perwalldist ;
+  data->im = 20;
   while(y < (Height / 2) + (Height / 4) / data->ray.perwalldist)
   {
-    color = (int)(data->image[walltext].image +
-		data->image[walltext].line_length * 1+
-		1 * (data->image[walltext].bits_per_pixel / 8));
-      // color = create_trgb(0, 0,255, 0);
-        data->im = 20;
-        my_mlx_pixel_put(data, x,  y, color);
-      y ++;
+    dst = (data->image[walltext].addr) +
+		(data->image[walltext].line_length * (49 - (int)y % 48) +  (49 - (int)y % 48)
+    * (data->image[walltext].bits_per_pixel / 8));
+       color = *(unsigned int *) dst;
+        my_mlx_pixel_put(data, pix,  y, color);
+      y++;
   }
-
 }
 
 void ft_distwall(t_data *data)
@@ -77,7 +73,7 @@ void ft_distwall(t_data *data)
       + (1 - data->ray.stepy) / 2) / data->ray.diry;
 }
 
-int	create_trgb(int t, int r, int g, int b)
+unsigned int	create_trgb(int t, int r, int g, int b)
 {
   return (t << 24 | r << 16 | g << 8 | b);
 }

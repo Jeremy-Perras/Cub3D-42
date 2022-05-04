@@ -1,13 +1,14 @@
 #include "cub.h"
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+void	my_mlx_pixel_put(t_data *data, int x, int y, unsigned int color)
 {
 	char	*dst;
   (void) x;
   (void) y;
 
 
-  dst = data->image[20].addr + (y * data->image[data->im ].line_length + x * (data->image[data->im].bits_per_pixel / 8));
+  dst = data->image[20].addr + (y * data->image[data->im].line_length +
+		x * (data->image[data->im].bits_per_pixel / 8));
   *(unsigned int*)dst = color;
 }
 

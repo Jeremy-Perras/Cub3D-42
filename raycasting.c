@@ -6,13 +6,13 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 12:49:10 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/03 17:02:00 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/04 08:45:56 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include"cub.h"
-static int  ft_choose_wall(int side, int dirx, int diry)
+static int  ft_choose_wall(double side, double dirx, double diry)
 {
   int walltext;
 

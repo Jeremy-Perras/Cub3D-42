@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 11:33:56 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/05/03 17:07:02 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/04 09:02:46 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,8 +151,8 @@ void ft_raycasting(t_data *data);
 */
 void ft_draw(t_data *data, int pix, int walltext);
 void ft_distwall(t_data *data);
-int	create_trgb(int t, int r, int g, int b);
+unsigned int	create_trgb(int t, int r, int g, int b);
 void ft_draw_background(t_data *data);
 void ft_image2(t_data *data);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	my_mlx_pixel_put(t_data *data, int x, int y, unsigned int color);
 #endif

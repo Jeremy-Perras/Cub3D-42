@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 11:33:56 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/05/04 11:37:50 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/04 12:12:29 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ void ft_put_colors(t_data *data);
 void 	ft_check_map(char **map);
 int 	f_color(char *line, t_parse *parse, t_data *data);
 int 	c_color(char *line, t_parse *parse, t_data *data);
+char	**ft_split2(char *str, char *charset);
 /*
 * windows.c
 */

@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 13:50:32 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/05/03 17:47:08 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/05/04 12:10:51 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,16 +99,24 @@ static int e_texture(char *line, t_parse *parse, t_data * data)
 
 void ft_texture(char *line, t_parse *parse, t_data *data)
 {
-	if (ft_strncmp(line, "NO", 2) == 0)
+	char **item;
+	int i;
+
+	i = -1;
+	item = ft_split2(line, " \t");
+	if (ft_strncmp(item[0], "NO", 2) == 0)
 		parse->flag += n_texture(line, parse, data);
-	if (ft_strncmp(line, "SO", 2) == 0)
+	if (ft_strncmp(item[0], "SO", 2) == 0)
 		parse->flag += s_texture(line, parse, data);
-	if (ft_strncmp(line, "WE", 2) == 0)
+	if (ft_strncmp(item[0], "WE", 2) == 0)
 		parse->flag += w_texture(line, parse, data);
-	if (ft_strncmp(line, "EA", 2) == 0)
+	if (ft_strncmp(item[0], "EA", 2) == 0)
 		parse->flag += e_texture(line, parse, data);
-	if (ft_strncmp(line, "F", 1) == 0)
+	if (ft_strncmp(item[0], "F", 1) == 0)
 		parse->flag += f_color(line, parse, data);
-	if (ft_strncmp(line, "C", 1) == 0)
+	if (ft_strncmp(item[0], "C", 1) == 0)
 		parse->flag += c_color(line, parse, data);
+	while(item[++i])
+		free(item[i]);
+	free(item);
 }

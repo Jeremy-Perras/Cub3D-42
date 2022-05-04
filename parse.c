@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 11:33:33 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/05/03 17:43:39 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/05/04 10:43:44 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void ft_check_line(char *line, t_parse *parse, t_data *data)
 		{
 			parse->player++;
 			data->player_orientation = line[i];
+			line[i] = '0';
 		}
 		if (!ft_strchr(caracters, line[i]) || parse->player > 1)
 			exit_error("Error: Unexpected catacter");

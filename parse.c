@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 11:33:33 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/05/04 12:06:21 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/05/04 16:53:53 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ t_data *ft_parse_map(char *map)
 	if (parse->flag != 6 || !parse->n || !parse->s || !parse->e
 			|| !parse->w || !parse->f || !parse->c || parse->player != 1)
 		exit_error("Invalid texture or player");
-	ft_check_map(parse->map);
+	ft_check_map(parse->map, data);
 	data->map = parse->map;
 	ft_put_colors(data);
 	close(fd);

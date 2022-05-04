@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 12:58:03 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/04 11:37:49 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/04 13:09:00 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,57 +28,58 @@ void ft_left_right(t_data * data, int key)
 {
   double tmpx;
   double tmpy;
-  printf("%f\n",data->player.angle);
+  printf("%f\n",data->player.angle * (180 / M_PI));
   tmpx = data->player.position.x;
   tmpy = data->player.position.y;
-  if(((45 * M_PI) / 180 <= data->player.angle || data->player.angle > (315 * M_PI) / 180) && key == 0)
+  if(( data->player.angle <= (45 * M_PI) / 180 || data->player.angle > (315 * M_PI) / 180) && key == 0)
   {
-    tmpx +=data->player.speed;
+    tmpy+=data->player.speed;
     if (data->map1.map[(int)round(tmpy)][(int)round(data->player.position.x)] == '0')
       data->player.position.y = tmpy;
   }
-  else if ((45 * M_PI) / 180 <= data->player.angle || data->player.angle > (315 * M_PI) / 180)
+  else if (data->player.angle <= (45 * M_PI) / 180 || data->player.angle > (315 * M_PI) / 180)
   {
-    tmpx -=data->player.speed;
+    tmpy-=data->player.speed;
     if (data->map1.map[(int)round(tmpy)][(int)round(data->player.position.x)] == '0')
       data->player.position.y = tmpy;
 
   }
-  if(((45 * M_PI) / 180 > data->player.angle && data->player.angle <= (135 * M_PI) / 180) && key == 0)
+  if(( data->player.angle > (45 * M_PI) / 180 && data->player.angle <= (135 * M_PI) / 180) && key == 0)
   {
     tmpx-= data->player.speed;
     if (data->map1.map[(int)round(data->player.position.y)][(int)round(tmpx)] == '0')
       data->player.position.x = tmpx;
   }
-  else if ((45 * M_PI) / 180 > data->player.angle && data->player.angle <= (135 * M_PI) / 180)
+  else if ( data->player.angle> (45 * M_PI) / 180 && data->player.angle <= (135 * M_PI) / 180)
   {
     tmpx+=data->player.speed;
     if (data->map1.map[(int)round(data->player.position.y)][(int)round(tmpx)] == '0')
       data->player.position.x = tmpx;
 
   }
-  if(((135 * M_PI) / 180 > data->player.angle && data->player.angle <= (225 * M_PI) / 180) && key == 0)
+  if(( data->player.angle > (135 * M_PI) / 180 && data->player.angle <= (225 * M_PI) / 180) && key == 0)
   {
     tmpy-=data->player.speed;
     if (data->map1.map[(int)round(tmpy)][(int)round(data->player.position.x)] == '0')
       data->player.position.y = tmpy;
   }
-  else if ((135 * M_PI) / 180 > data->player.angle && data->player.angle <= (225 * M_PI) / 180)
+  else if ( data->player.angle > (135 * M_PI) / 180  && data->player.angle <= (225 * M_PI) / 180)
   {
     tmpy+=data->player.speed;
     if (data->map1.map[(int)round(tmpy)][(int)round(data->player.position.x)] == '0')
       data->player.position.y = tmpy;
 
   }
-  if(((225 * M_PI) / 180 > data->player.angle && data->player.angle <= (315 * M_PI) / 180) && key == 0)
+  if((  data->player.angle > (225 * M_PI) / 180 && data->player.angle <= (315 * M_PI) / 180) && key == 0)
   {
-    tmpx-=data->player.speed;
+      printf("go in");
+    tmpx+=data->player.speed;
     if (data->map1.map[(int)round(data->player.position.y)][(int)round(tmpx)] == '0')
       data->player.position.x = tmpx;
   }
-  else if ((225 * M_PI) / 180 > data->player.angle && data->player.angle <= (315 * M_PI) / 180)
+  else if ( data->player.angle > (225 * M_PI) / 180 && data->player.angle <= (315 * M_PI) / 180)
   {
-    tmpx+=data->player.speed;
+    tmpx-=data->player.speed;
     if (data->map1.map[(int)round(data->player.position.y)][(int)round(tmpx)] == '0')
       data->player.position.x = tmpx;
 

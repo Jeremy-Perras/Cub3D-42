@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:30:43 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/04 09:34:11 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/04 14:21:33 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,11 @@ void ft_draw(t_data *data, int pix, int walltext)
   data->im = 20;
   while(y < (Height / 2) + (Height / 4) / data->ray.perwalldist)
   {
-    dst = (data->image[walltext].addr) +
-		(data->image[walltext].line_length * (49 - (int)y % 48) +  (49 - (int)y % 48)
+    dst = (data->image[walltext].addr)
+    +(int) (data->image[walltext].line_length *  round((50 * ((y - ((Height / 2) -
+    (Height / 4) / data->ray.perwalldist)) / (((Height / 2) + (Height / 4) / data->ray.perwalldist)
+     - ((Height / 2) - (Height / 4) / data->ray.perwalldist)))))
+      /*(49 - (int)y % 48)*/ +  (pix % 50)
     * (data->image[walltext].bits_per_pixel / 8));
        color = *(unsigned int *) dst;
         my_mlx_pixel_put(data, pix,  y, color);

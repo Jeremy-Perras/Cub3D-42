@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 09:02:29 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/04 11:01:37 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/04 14:33:30 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int main(int ac, char **av)
   // ft_image2(data);
   ft_put_background_init(data);
   ft_raycasting(data);
-  mlx_do_key_autorepeatoff(data->mlx);
-  mlx_key_hook(data->win.ref, key, data);
+  mlx_do_sync(data->mlx);
+  mlx_hook(data->win.ref, 2, 1l<<0, key, data);
   mlx_loop(data->mlx);
 }

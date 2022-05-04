@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 12:58:03 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/04 13:09:00 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/04 15:21:20 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@ void ft_move_player(t_data *data, double pos)
 {
   double tmpx;
   double tmpy;
+  int tmpx2;
+  int tmpy2;
 
   tmpx = data->player.position.x + (data->player.speed * cos(data->player.angle)) * pos;
-  if (data->map1.map[(int)round(data->player.position.y)][(int)round(tmpx)] == '0')
+  if (data->map1.map[(int)floor(data->player.position.y)][(int)floor(tmpx)] != '1')
     data->player.position.x = tmpx;
   tmpy = data->player.position.y + (data->player.speed * sin(data->player.angle)) * pos;
-  if (data->map1.map[(int)round(tmpy)][(int)round(data->player.position.x)] == '0')
+  if (data->map1.map[(int)floor(tmpy)][(int)floor(data->player.position.x)] != '1')
     data->player.position.y = tmpy;
 }
 
@@ -28,7 +30,7 @@ void ft_left_right(t_data * data, int key)
 {
   double tmpx;
   double tmpy;
-  printf("%f\n",data->player.angle * (180 / M_PI));
+
   tmpx = data->player.position.x;
   tmpy = data->player.position.y;
   if(( data->player.angle <= (45 * M_PI) / 180 || data->player.angle > (315 * M_PI) / 180) && key == 0)
@@ -72,7 +74,6 @@ void ft_left_right(t_data * data, int key)
   }
   if((  data->player.angle > (225 * M_PI) / 180 && data->player.angle <= (315 * M_PI) / 180) && key == 0)
   {
-      printf("go in");
     tmpx+=data->player.speed;
     if (data->map1.map[(int)round(data->player.position.y)][(int)round(tmpx)] == '0')
       data->player.position.x = tmpx;
@@ -104,7 +105,6 @@ int key(int key, t_data *data)
     data->player.angle -= 2 * M_PI;
   if (data->player.angle <= 0)
     data->player.angle = 2 * M_PI + data->player.angle;
-    //data->player.angle += 2 * M_PI;
   ft_raycasting(data);
   ft_put_background(data);
     return (0);

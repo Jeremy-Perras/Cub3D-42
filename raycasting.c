@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 12:49:10 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/04 10:52:01 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/04 14:34:24 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ static int  ft_choose_wall(double side, double dirx, double diry)
 static void ft_init(t_data *data, int pix)
 {
   data->ray.camx = ((double)pix - (Width / 2)) / (Width / 2);
-  data->ray.dirx = cos(data->player.angle) / 2 + cos(data->player.angle - (M_PI * 75) / 180) *   data->ray.camx;
-  data->ray.diry = sin(data->player.angle) / 2  + sin(data->player.angle - (M_PI * 75) / 180) *   data->ray.camx;
+  data->ray.dirx = cos(data->player.angle)  + cos(data->player.angle - (M_PI * 90) / 180) *   data->ray.camx;
+  data->ray.diry = sin(data->player.angle)  + sin(data->player.angle - (M_PI * 90) / 180) *   data->ray.camx;
   data->ray.mapx = floor(data->player.position.x);
   data->ray.mapy = floor(data->player.position.y);
   data->ray.deltadistx = sqrt(1 + (data->ray.diry * data->ray.diry) / (data->ray.dirx  * data->ray.dirx));

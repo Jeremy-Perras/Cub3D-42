@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 13:36:16 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/04 08:39:19 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/04 11:01:48 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,11 @@ void	ft_put_background_init(t_data *data)
 				    mlx_put_image_to_window(data->mlx, data->win.ref, data->image[4].ref, x * 4, y * 4);
 			else if (data->map[y][x] == '0')
 				    mlx_put_image_to_window(data->mlx, data->win.ref, data->image[3].ref, x * 4, y * 4);
-			if(data->map[y][x] == 'N' || data->map[y][x] == 'S'||data->map[y][x] == 'E'|| data->map[y][x] == 'O')
+			if(data->map[y][x] == 'N' || data->map[y][x] == 'S'||data->map[y][x] == 'E'|| data->map[y][x] == 'W')
 			{
 				data->player.position.x = x;
 			  data->player.position.y = y;
+				data->map[y][x] = '0';
 				mlx_put_image_to_window(data->mlx, data->win.ref, data->image[2].ref, x * 4, y * 4);
 			}
 			x++;

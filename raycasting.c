@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 12:49:10 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/04 08:45:56 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/04 10:52:01 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void ft_raycasting(t_data *data)
     while(hit == 0)
     {
       ft_wall(data);
-      if(data->map1.map[data->ray.mapy][data->ray.mapx] != '0')
+      if(data->map1.map[data->ray.mapy][data->ray.mapx] == '1')
         hit = 1;
     }
     walltext = ft_choose_wall(data->ray.side, data->ray.dirx, data->ray.diry);

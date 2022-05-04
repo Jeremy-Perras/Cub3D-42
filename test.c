@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 09:02:29 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/03 17:18:58 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/04 11:01:37 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,19 @@ static void ft_init(t_data *data)
   data->player.speed = 0.6;
   if(data->player_orientation == 'N')
   {
-   data->player.angle = M_PI / 2;
+   data->player.angle = 0;
   }
   if(data->player_orientation == 'S')
   {
-   data->player.angle = - M_PI / 2;
+   data->player.angle = - M_PI ;
   }
   if(data->player_orientation == 'E')
 	{
-     data->player.angle = 0;
+     data->player.angle = M_PI / 2;
   }
-  if(data->player_orientation == 'O')
+  if(data->player_orientation == 'W')
   {
-     data->player.angle = M_PI;
+     data->player.angle = - M_PI / 2;
   }
   data->player.rot_speed = (10 * M_PI) / 180;
   data->ray.colorfloor = create_trgb(0,  data->f_r, data->f_g,  data->f_b);

@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 10:55:54 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/05/04 10:45:45 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/05/04 10:52:16 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,6 @@ static void check_player(char **map)
 			if (ft_strchr(player, map[i][j]))
 			{
 				count++;
-				map[i][j] = '0';
 			}
 		}
 	}

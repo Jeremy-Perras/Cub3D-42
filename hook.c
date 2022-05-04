@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 12:58:03 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/04 10:30:56 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/04 11:37:49 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,18 @@ void ft_left_right(t_data * data, int key)
 {
   double tmpx;
   double tmpy;
-
+  printf("%f\n",data->player.angle);
   tmpx = data->player.position.x;
   tmpy = data->player.position.y;
-  if(((45 * M_PI) / 180 <= data->player.angle && data->player.angle > (315 * M_PI) / 180) && key == 0)
+  if(((45 * M_PI) / 180 <= data->player.angle || data->player.angle > (315 * M_PI) / 180) && key == 0)
   {
-    tmpy -=data->player.speed;
+    tmpx +=data->player.speed;
     if (data->map1.map[(int)round(tmpy)][(int)round(data->player.position.x)] == '0')
       data->player.position.y = tmpy;
   }
-  else if ((45 * M_PI) / 180 <= data->player.angle && data->player.angle > (315 * M_PI) / 180)
+  else if ((45 * M_PI) / 180 <= data->player.angle || data->player.angle > (315 * M_PI) / 180)
   {
-    tmpy +=data->player.speed;
+    tmpx -=data->player.speed;
     if (data->map1.map[(int)round(tmpy)][(int)round(data->player.position.x)] == '0')
       data->player.position.y = tmpy;
 
@@ -101,8 +101,9 @@ int key(int key, t_data *data)
     data->player.angle -= data->player.rot_speed;
   if (data->player.angle >= 2 * M_PI)
     data->player.angle -= 2 * M_PI;
-  if (data->player.angle <= - 2 * M_PI)
-    data->player.angle += 2 * M_PI;
+  if (data->player.angle <= 0)
+    data->player.angle = 2 * M_PI + data->player.angle;
+    //data->player.angle += 2 * M_PI;
   ft_raycasting(data);
   ft_put_background(data);
     return (0);

@@ -6,12 +6,12 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 11:37:18 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/05/02 14:29:58 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/05 13:42:06 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
-
+/*
 void ft_put_colors(t_data *data)
 {
 	char r[3] = {'0', '0'};
@@ -74,4 +74,4 @@ void ft_put_colors(t_data *data)
 	}
 	ft_putstr_fd("};", fd2);
 	close(fd2);
-}
+}*/

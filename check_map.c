@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 10:55:54 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/05/05 11:40:08 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/05/05 13:56:40 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,5 @@ void	ft_check_map(char **map, t_data *data, int fd)
 	check_player(map, data);
 	i = -1;
 	ft_check_zero(map);
-	ft_put_colors(data);
 	ft_put_one(data->map);
 }

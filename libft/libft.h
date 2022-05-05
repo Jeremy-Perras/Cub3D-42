@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 01:42:29 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/04/27 16:16:26 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/05 13:39:40 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,5 @@ void			u_format(t_printf *tab);
 void			x_format(t_printf *tab, int index);
 char			*get_next_line(int fd);
 double			ft_atof(const char *str);
-
-
 
 #endif

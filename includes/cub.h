@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 11:33:56 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/05/05 12:08:41 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/05/05 13:56:01 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include "../minilibx/mlx.h"
 # include <stdlib.h>
 # include <fcntl.h>
-# define Height 400
-# define Width 800
+# define HEIGHT 400
+# define WIDTH 800
 
 typedef struct t_map
 {
@@ -127,7 +127,6 @@ void			ft_texture(char *line, t_parse *parse, t_data *data);
 void			exit_error(char *msg);
 void			ft_put_one(char **map);
 void			ft_puthexa(int b, int *m, char *c);
-void			ft_put_colors(t_data *data);
 void			ft_check_map(char **map, t_data *data, int fd);
 int				f_color(char *line, t_parse *parse, t_data *data);
 int				c_color(char *line, t_parse *parse, t_data *data);
@@ -148,6 +147,7 @@ void			ft_image2(t_data *data);
 * hook.c
 */
 int				key(int key, t_data *data);
+void			ft_left_right4(t_data *data, int key);
 /*
 * recasting.c
 */

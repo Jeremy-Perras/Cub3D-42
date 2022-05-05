@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 09:02:29 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/05 13:08:53 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/05 13:51:59 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ static void	ft_init(t_data *data)
 int	main(int ac, char **av)
 {
 	t_data	*data;
-	int		i;
 
 	if (ac != 2)
 		return (printf("Error\nInsufficient number of arguments"));
@@ -41,7 +40,7 @@ int	main(int ac, char **av)
 		return (printf("Error\n Invalid map extension\n"));
 	data = ft_parse_map(av[1]);
 	data->mlx = mlx_init();
-	data->win = ft_windows(data->mlx, Width, Height, "test");
+	data->win = ft_windows(data->mlx, WIDTH, HEIGHT, "test");
 	ft_init(data);
 	ft_put_image(data);
 	ft_put_background_init(data);

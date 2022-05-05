@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 09:02:29 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/04 14:33:30 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/05 09:56:16 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void ft_init(t_data *data)
 {
   data->map1.map = data->map;
-  data->player.speed = 0.6;
+  data->player.speed = 0.4;
   if(data->player_orientation == 'N')
   {
    data->player.angle = 0;

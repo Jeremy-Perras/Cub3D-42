@@ -5,14 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/23 12:58:03 by jperras           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/05/04 15:50:22 by dhaliti          ###   ########.fr       */
-=======
-/*   Updated: 2022/05/05 08:43:40 by jperras          ###   ########.fr       */
->>>>>>> 97a25838718348a78f49bae2508b44a789ff7e54
+/*   Created: 2022/05/05 10:20:05 by jperras           #+#    #+#             */
+/*   Updated: 2022/05/05 10:20:06 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
 
 #include "cub.h"
 void ft_move_player(t_data *data, double pos)

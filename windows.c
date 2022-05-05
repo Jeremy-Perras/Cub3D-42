@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 13:36:16 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/04 16:52:26 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/05/05 10:25:13 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void ft_put_image(t_data *data)
 	data->image[1] = ft_new_image(data->mlx, data->s);
 	data->image[2] = ft_new_image(data->mlx, "image/Player.xpm");
 	data->image[3] = ft_new_image(data->mlx, "image/White.xpm");
-	data->image[4] = ft_new_image(data->mlx, "image/Red.xpm");
+	data->image[4] = ft_new_image(data->mlx, "image/border.xpm");
 	data->image[5] = ft_new_image(data->mlx, data->n);
 	data->image[6] = ft_new_image(data->mlx, data->s);
 	data->image[7] = ft_new_image(data->mlx, data->e);

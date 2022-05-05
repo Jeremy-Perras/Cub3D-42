@@ -6,7 +6,11 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 12:58:03 by jperras           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/05/04 16:10:14 by jperras          ###   ########.fr       */
+=======
+/*   Updated: 2022/05/04 15:50:22 by dhaliti          ###   ########.fr       */
+>>>>>>> 038d7335e030de2c05f916e6c1150938121f9413
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +19,12 @@ void ft_move_player(t_data *data, double pos)
 {
   double tmpx;
   double tmpy;
+<<<<<<< HEAD
 
+=======
+  // int tmpx2;
+  // int tmpy2;
+>>>>>>> 038d7335e030de2c05f916e6c1150938121f9413
 
   tmpx = data->player.position.x + (data->player.speed * cos(data->player.angle)) * pos;
   if (data->map1.map[(int)floor(data->player.position.y)][(int)floor(tmpx)] != '1')

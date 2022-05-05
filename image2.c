@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   image2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/05 08:50:11 by jperras           #+#    #+#             */
+/*   Updated: 2022/05/05 09:14:46 by jperras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub.h"
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, unsigned int color)
 {
 	char	*dst;
-  (void) x;
-  (void) y;
 
-
-  dst = data->image[20].addr + (y * data->image[data->im].line_length +
-		x * (data->image[data->im].bits_per_pixel / 8));
-  *(unsigned int*)dst = color;
+	if( x <= Width && x >= 0 && y >= 0 && y <= Height)
+	{
+  	dst = data->image[20].addr + (y * data->image[20].line_length +
+			x * (data->image[20].bits_per_pixel / 8));
+			*(unsigned int*)dst = color;
+	}
 }
 
  int render_rect(t_data *data, int color)

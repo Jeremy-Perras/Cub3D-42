@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:30:43 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/04 14:21:33 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/05 10:15:31 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void ft_draw_background(t_data *data)
   while (x < Width)
   {
     y = 0;
-    while(y < Height / 2)
+    while(y <= Height / 2)
     {
 	     color = create_trgb(0, data->c_r, data->c_g, data->c_b);
        		data->im = 20;
@@ -29,7 +29,7 @@ void ft_draw_background(t_data *data)
 
         y ++;
     }
-    while(y < Height)
+    while(y <= Height)
   {
         color = create_trgb(0, data->f_r, data->f_g, data->f_b);
         		data->im = 20;
@@ -47,18 +47,16 @@ void ft_draw(t_data *data, int pix, int walltext)
   unsigned int color;
   char	*dst;
 
-
-
   y =  0 / data->ray.perwalldist;
   y = (Height / 2) - (Height / 4) / data->ray.perwalldist ;
   data->im = 20;
-  while(y < (Height / 2) + (Height / 4) / data->ray.perwalldist)
+  while(y <= (Height / 2) + (Height / 4) / data->ray.perwalldist)
   {
     dst = (data->image[walltext].addr)
-    +(int) (data->image[walltext].line_length *  round((50 * ((y - ((Height / 2) -
+    +(int) (data->image[walltext].line_length *  round((data->image[walltext].size.y * ((y - ((Height / 2) -
     (Height / 4) / data->ray.perwalldist)) / (((Height / 2) + (Height / 4) / data->ray.perwalldist)
      - ((Height / 2) - (Height / 4) / data->ray.perwalldist)))))
-      /*(49 - (int)y % 48)*/ +  (pix % 50)
+     +  (pix % data->image[walltext].size.x)
     * (data->image[walltext].bits_per_pixel / 8));
        color = *(unsigned int *) dst;
         my_mlx_pixel_put(data, pix,  y, color);

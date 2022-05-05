@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 12:49:10 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/04 14:34:24 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/05 09:15:23 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static void ft_init(t_data *data, int pix)
   data->ray.mapy = floor(data->player.position.y);
   data->ray.deltadistx = sqrt(1 + (data->ray.diry * data->ray.diry) / (data->ray.dirx  * data->ray.dirx));
   data->ray.deltadisty = sqrt(1 + (data->ray.dirx  * data->ray.dirx ) / (data->ray.diry * data->ray.diry));
+
 }
 static void ft_distinit(t_data *data)
 {
@@ -102,7 +103,7 @@ void ft_raycasting(t_data *data)
     while(hit == 0)
     {
       ft_wall(data);
-      if(data->map1.map[data->ray.mapy][data->ray.mapx] == '1')
+      if(data->map1.map[abs(data->ray.mapy)][abs(data->ray.mapx)] == '1')
         hit = 1;
     }
     walltext = ft_choose_wall(data->ray.side, data->ray.dirx, data->ray.diry);

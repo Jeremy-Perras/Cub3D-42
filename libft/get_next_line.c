@@ -6,11 +6,18 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 12:29:18 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/05/05 13:45:38 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/05 14:03:38 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static void	ft_init(int *i, int *j, char **line)
+{
+	*i = 1;
+	*j = 0;
+	*line = (char *)malloc(sizeof(char *) * 9999);
+}
 
 char	*get_next_line(int fd)
 {
@@ -19,9 +26,7 @@ char	*get_next_line(int fd)
 	int		i;
 	int		j;
 
-	i = 1;
-	j = 0;
-	line = (char *)malloc(sizeof(char *) * 9999);
+	ft_init(&i, &j, &line);
 	if (fd < 0)
 		return (NULL);
 	while (i > 0)

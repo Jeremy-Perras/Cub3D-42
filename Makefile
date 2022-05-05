@@ -6,14 +6,14 @@
 #    By: jperras <jperras@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/22 08:57:03 by jperras           #+#    #+#              #
-#    Updated: 2022/05/05 13:27:12 by jperras          ###   ########.fr        #
+#    Updated: 2022/05/05 14:29:58 by dhaliti          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 
-SRCS = test.c windows.c hook.c raycasting.c parse.c parse_texture.c utils.c check_map.c floor_ceiling_color.c raycasting2.c put_colors.c image2.c ft_split2.c \
-		hook2.c put_back_ground.c
+SRCS = cub.c ./graphics/windows.c ./graphics/hook.c ./graphics/raycasting.c ./parse/parse.c ./parse/parse_texture.c ./parse/utils.c ./parse/check_map.c ./parse/floor_ceiling_color.c ./graphics/raycasting2.c ./graphics/put_colors.c ./graphics/image2.c ./parse/ft_split2.c \
+		./graphics/hook2.c ./graphics/put_back_ground.c
 
 INCLUDES = -I./includes
 
@@ -24,8 +24,6 @@ CC = gcc
 LIBMLX = -L minilibx -lmlx
 
 FLAGS = -Wall -Werror -Wextra -g
-
-#LIBMLX = -L /usr/local/lib -lmlx
 
 LIBFT = -L libft -lft
 

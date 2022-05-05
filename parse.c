@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 11:33:33 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/05/05 10:44:24 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/05/05 10:54:58 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ static void ft_lab(char *line, t_parse *parse, t_data *data)
 	parse->map[x] = ft_strdup(line);
  	ft_check_line(line, parse, data);
 	line[ft_strlen(line)] = '1';
-	data->map2[x] = ft_strdup(line);
+	data->map[x] = ft_strdup(line);
 	x++;
 	parse->map[x] = NULL;
-	data->map2[x] = NULL;
+	data->map[x] = NULL;
 }
 
 static void ft_parse_line(char *line, t_parse *parse, t_data *data)
@@ -80,7 +80,7 @@ static void ft_init_parse_and_data(t_parse **parse, t_data **data)
 	(*parse)->c      = 0;
 	(*parse)->player = 0;
 	*data = (t_data *)malloc(sizeof(t_data));
-	(*data)->map2 = (char **)malloc(sizeof(char **) * 1000);
+	(*data)->map = (char **)malloc(sizeof(char **) * 1000);
 }
 
 static void ft_put_one(char **map)
@@ -127,9 +127,9 @@ t_data *ft_parse_map(char *map)
 			|| !parse->w || !parse->f || !parse->c || parse->player != 1)
 		exit_error("Invalid texture or player");
 	ft_check_map(parse->map, data);
-	data->map = parse->map;
+	data->map2 = parse->map;
 	ft_put_colors(data);
-	ft_put_one(data->map2);
+	ft_put_one(data->map);
 	close(fd);
 	return (data);
 }

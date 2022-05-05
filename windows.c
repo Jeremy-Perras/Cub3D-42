@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 13:36:16 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/05 10:25:13 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/05 10:47:01 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void ft_put_image(t_data *data)
 	data->image[1] = ft_new_image(data->mlx, data->s);
 	data->image[2] = ft_new_image(data->mlx, "image/Player.xpm");
 	data->image[3] = ft_new_image(data->mlx, "image/White.xpm");
-	data->image[4] = ft_new_image(data->mlx, "image/border.xpm");
+	data->image[4] = ft_new_image(data->mlx, "image/border2.xpm");
 	data->image[5] = ft_new_image(data->mlx, data->n);
 	data->image[6] = ft_new_image(data->mlx, data->s);
 	data->image[7] = ft_new_image(data->mlx, data->e);
@@ -72,14 +72,14 @@ void	ft_put_background_init(t_data *data)
 
 	y = 0;
 	x = 0;
-	while (data->map[y])
+	while (data->map2[y])
 	{
 		x = 0;
-		while (data->map[y][x])
+		while (data->map2[y][x])
 		{
-			if (data->map[y][x] == '1')
+			if (data->map2[y][x] == '1')
 				    mlx_put_image_to_window(data->mlx, data->win.ref, data->image[4].ref, x * 4, y * 4);
-			else if (data->map[y][x] == '0')
+			else if (data->map2[y][x] == '0')
 				    mlx_put_image_to_window(data->mlx, data->win.ref, data->image[3].ref, x * 4, y * 4);
 			if(data->player.position.x == x && data->player.position.y == y)
 				mlx_put_image_to_window(data->mlx, data->win.ref, data->image[2].ref, x * 4, y * 4);
@@ -97,16 +97,16 @@ void	ft_put_background(t_data *data)
 	y = 0;
 	x = 0;
 
-	while (data->map[y])
+	while (data->map2[y])
 	{
 		x = 0;
-		while (data->map[y][x])
+		while (data->map2[y][x])
 		{
-			if (data->map[y][x] == '1')
+			if (data->map2[y][x] == '1')
 			{
 				    mlx_put_image_to_window(data->mlx, data->win.ref, data->image[4].ref, x * 4, y * 4);
 			}
-			else if (data->map[y][x] == '0')
+			else if (data->map2[y][x] == '0')
 				    mlx_put_image_to_window(data->mlx, data->win.ref, data->image[3].ref, x * 4, y * 4);
 			if((int)round(data->player.position.x) == x && (int)round(data->player.position.y) == y)
 				 mlx_put_image_to_window(data->mlx, data->win.ref, data->image[2].ref, x *4, y * 4);

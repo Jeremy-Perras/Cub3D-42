@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:05 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/05 10:20:06 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/05 10:36:59 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ void ft_left_right(t_data * data, int key)
 int key(int key, t_data *data)
 {
   (void) data;
+  if (key == 53)
+    exit(0);
   if (key == 13)
     ft_move_player(data, 1.0);
   if (key == 1)

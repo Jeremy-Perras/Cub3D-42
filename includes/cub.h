@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 11:33:56 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/05/05 12:07:42 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/05/05 12:08:41 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_position
 typedef struct s_player
 {
 	t_position	position;
-	doubl		speed;
+	double		speed;
 	double		angle;
 	double		rot_speed;
 }	t_player;

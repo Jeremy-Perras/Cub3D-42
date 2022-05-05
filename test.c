@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 09:02:29 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/05 10:43:09 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/05/05 11:00:43 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int main(int ac, char **av)
   // ft_image2(data);
   ft_put_background_init(data);
   ft_raycasting(data);
+  ft_put_background_init(data);
   mlx_do_sync(data->mlx);
   mlx_hook(data->win.ref, 2, 1l<<0, key, data);
   mlx_loop(data->mlx);

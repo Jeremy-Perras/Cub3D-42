@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 11:33:33 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/05/05 10:41:44 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/05/05 10:44:24 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void ft_lab(char *line, t_parse *parse, t_data *data)
 	line[ft_strlen(line) - 1] = '\0';
 	parse->map[x] = ft_strdup(line);
  	ft_check_line(line, parse, data);
-	line[ft_strlen(line) - 1] = '1';
+	line[ft_strlen(line)] = '1';
 	data->map2[x] = ft_strdup(line);
 	x++;
 	parse->map[x] = NULL;

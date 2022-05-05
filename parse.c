@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 11:33:33 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/05/04 16:53:53 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/05/04 17:58:40 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void ft_lab(char *line, t_parse *parse, t_data *data)
 {
 	static int x = 0;
 	parse->count = 1;
-	line[ft_strlen(line) - 1] = '\0';
+	line[ft_strlen(line) - 1] = '1';
  	ft_check_line(line, parse, data);
 	parse->map[x] = ft_strdup(line);
 	x++;
@@ -79,6 +79,22 @@ static void ft_init_parse_and_data(t_parse **parse, t_data **data)
 	*data = (t_data *)malloc(sizeof(t_data));
 }
 
+static void ft_put_one(char **map)
+{
+	int i = -1;
+	int j;
+
+	while (map[++i])
+	{
+		j = -1;
+		while (map[i][++j])
+		{
+			if (map[i][j] == ' ' || map[i][j] == '\t')
+				map[i][j] = '1';
+		}
+	}
+}
+
 
 t_data *ft_parse_map(char *map)
 {
@@ -109,6 +125,7 @@ t_data *ft_parse_map(char *map)
 	ft_check_map(parse->map, data);
 	data->map = parse->map;
 	ft_put_colors(data);
+	ft_put_one(data->map);
 	close(fd);
 	return (data);
 }

@@ -1,15 +1,15 @@
 
-WE ./image/501.xpm
-NO ./image/502.xpm
+WE ./image/508.xpm
+NO ./image/507.xpm
 
 
-SO ./image/503.xpm
+SO ./image/506.xpm
 
-EA ./image/504.xpm
+EA ./image/505.xpm
 
 
-F 184,113,39
-C 51,198,227
+F 90,90,90
+C 200,200,200
 
         111111111111111111111111111
         1 1000000000110000000000001

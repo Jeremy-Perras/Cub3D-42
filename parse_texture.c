@@ -6,17 +6,17 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 13:50:32 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/05/04 12:10:51 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/05/05 11:49:33 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-static int n_texture(char *line, t_parse *parse, t_data *data)
+static int	n_texture(char *line, t_parse *parse, t_data *data)
 {
-	int fd;
-	int i;
-	char **path;
+	int		fd;
+	int		i;
+	char	**path;
 
 	path = ft_split(line, ' ');
 	path[1][ft_strlen(path[1]) - 1] = '\0';
@@ -33,11 +33,11 @@ static int n_texture(char *line, t_parse *parse, t_data *data)
 	return (1);
 }
 
-static int s_texture(char *line, t_parse *parse, t_data *data)
+static int	s_texture(char *line, t_parse *parse, t_data *data)
 {
-	int fd;
-	int i;
-	char **path;
+	int		fd;
+	int		i;
+	char	**path;
 
 	path = ft_split(line, ' ');
 	path[1][ft_strlen(path[1]) - 1] = '\0';
@@ -54,11 +54,11 @@ static int s_texture(char *line, t_parse *parse, t_data *data)
 	return (1);
 }
 
-static int w_texture(char *line, t_parse *parse, t_data *data)
+static int	w_texture(char *line, t_parse *parse, t_data *data)
 {
-	int fd;
-	int i;
-	char **path;
+	int		fd;
+	int		i;
+	char	**path;
 
 	path = ft_split(line, ' ');
 	path[1][ft_strlen(path[1]) - 1] = '\0';
@@ -76,11 +76,11 @@ static int w_texture(char *line, t_parse *parse, t_data *data)
 	return (1);
 }
 
-static int e_texture(char *line, t_parse *parse, t_data * data)
+static int	e_texture(char *line, t_parse *parse, t_data *data)
 {
-	int fd;
-	int i;
-	char **path;
+	int		fd;
+	int		i;
+	char	**path;
 
 	path = ft_split(line, ' ');
 	path[1][ft_strlen(path[1]) - 1] = '\0';
@@ -97,10 +97,10 @@ static int e_texture(char *line, t_parse *parse, t_data * data)
 	return (1);
 }
 
-void ft_texture(char *line, t_parse *parse, t_data *data)
+void	ft_texture(char *line, t_parse *parse, t_data *data)
 {
-	char **item;
-	int i;
+	char	**item;
+	int		i;
 
 	i = -1;
 	item = ft_split2(line, " \t");
@@ -116,7 +116,7 @@ void ft_texture(char *line, t_parse *parse, t_data *data)
 		parse->flag += f_color(line, parse, data);
 	if (ft_strncmp(item[0], "C", 1) == 0)
 		parse->flag += c_color(line, parse, data);
-	while(item[++i])
+	while (item[++i])
 		free(item[i]);
 	free(item);
 }

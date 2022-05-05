@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 09:02:29 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/05 09:56:16 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/05 10:43:09 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,13 @@ int main(int ac, char **av)
   if (!(ft_strrchr(av[1], '.')) || ft_strncmp((ft_strrchr(av[1], '.')), ".cub", 4) != 0)
     return (printf("Error\n Invalid map extension\n"));
   data = ft_parse_map(av[1]);
-  printf("%s\n%s\n%s\n%s\n%d\n%d\n%d\n%d\n%d\n%d\n", data->n, data->s, data->e, data->w, data->c_r, data->c_g, data->c_b, data->f_r, data->f_g, data->f_b);
   int i = -1;
   while (data->map[++i])
     printf("%s\n", data->map[i]);
+  i = -1;
+  printf("\n\n");
+  while (data->map2[++i])
+	printf("%s\n", data->map2[i]);
   data->mlx = mlx_init();
   data->win = ft_windows(data->mlx, Width ,Height , "test");
   ft_init(data);

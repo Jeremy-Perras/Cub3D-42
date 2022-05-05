@@ -6,7 +6,7 @@
 /*   By: dhaliti <dhaliti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 10:55:54 by dhaliti           #+#    #+#             */
-/*   Updated: 2022/05/04 17:56:35 by dhaliti          ###   ########.fr       */
+/*   Updated: 2022/05/05 10:37:13 by dhaliti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,10 +168,7 @@ static void ft_check_zero(char **map)
 					|| !map[i + 1][j - 1] || (map[i + 1][j - 1] != '1'
 					&& map[i + 1][j - 1] != '0') || !map[i + 1][j + 1]
 					|| (map[i + 1][j + 1] != '1' && map[i + 1][j + 1] != '0'))
-					{
-						printf("i:%d j:%d map[i][j]%c", i, j, map[i][j]);
-										exit_error("Walls must be closed AAA");
-					}
+										exit_error("Walls must be closed");
 			}
 		}
 	}

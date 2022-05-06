@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:20:05 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/05 12:35:09 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/06 09:35:34 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_left_right3(t_data *data, int key)
 	{
 		tmpy -= data->player.speed;
 		if (data->map1.map[(int)round(tmpy)]
-			[(int)round(data->player.position.x)] == '0')
+			[(int)round(data->player.position.x)] != '1')
 			data->player.position.y = tmpy;
 	}
 	else if (data->player.angle > (135 * M_PI) / 180
@@ -49,7 +49,7 @@ void	ft_left_right3(t_data *data, int key)
 	{
 		tmpy += data->player.speed;
 		if (data->map1.map[(int)round(tmpy)]
-			[(int)round(data->player.position.x)] == '0')
+			[(int)round(data->player.position.x)] != '1')
 			data->player.position.y = tmpy;
 	}
 	ft_left_right4(data, key);
@@ -67,7 +67,7 @@ void	ft_left_right2(t_data *data, int key)
 	{
 		tmpx -= data->player.speed;
 		if (data->map1.map[(int)round(data->player.position.y)]
-			[(int)round(tmpx)] == '0')
+			[(int)round(tmpx)] != '1')
 				data->player.position.x = tmpx;
 	}
 	else if (data->player.angle > (45 * M_PI) / 180
@@ -75,7 +75,7 @@ void	ft_left_right2(t_data *data, int key)
 	{
 		tmpx += data->player.speed;
 		if (data->map1.map[(int)round(data->player.position.y)]
-			[(int)round(tmpx)] == '0')
+			[(int)round(tmpx)] != '1')
 			data->player.position.x = tmpx;
 	}
 	ft_left_right3(data, key);
@@ -93,7 +93,7 @@ void	ft_left_right(t_data *data, int key)
 	{
 		tmpy += data->player.speed;
 		if (data->map1.map[(int)round(tmpy)]
-			[(int)round(data->player.position.x)] == '0')
+			[(int)round(data->player.position.x)] != '1')
 			data->player.position.y = tmpy;
 	}
 	else if (data->player.angle <= (45 * M_PI) / 180
@@ -101,7 +101,7 @@ void	ft_left_right(t_data *data, int key)
 	{
 		tmpy -= data->player.speed;
 		if (data->map1.map[(int)round(tmpy)]
-			[(int)round(data->player.position.x)] == '0')
+			[(int)round(data->player.position.x)] != '1')
 			data->player.position.y = tmpy;
 	}
 	ft_left_right2(data, key);

@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:30:43 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/05 13:55:09 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/06 09:50:37 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,8 @@ void	ft_draw(t_data *data, int pix, int walltext)
 	unsigned int	color;
 	char			*dst;
 
-	y = 0 / data->ray.perwalldist;
+
 	y = (HEIGHT / 2) - (HEIGHT / 4) / data->ray.perwalldist ;
-	data->im = 20;
 	while (y <= (HEIGHT / 2) + (HEIGHT / 4) / data->ray.perwalldist)
 	{
 		dst = (data->image[walltext].addr)

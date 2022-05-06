@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 11:27:24 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/05 11:31:54 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/06 09:35:42 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_left_right4(t_data *data, int key)
 	{
 		tmpx += data->player.speed;
 		if (data->map1.map[(int)round(data->player.position.y)]
-			[(int)round(tmpx)] == '0')
+			[(int)round(tmpx)] != '1')
 			data->player.position.x = tmpx;
 	}
 	else if (data->player.angle > (225 * M_PI) / 180
@@ -32,7 +32,7 @@ void	ft_left_right4(t_data *data, int key)
 	{
 		tmpx -= data->player.speed;
 		if (data->map1.map[(int)round(data->player.position.y)]
-			[(int)round(tmpx)] == '0')
+			[(int)round(tmpx)] != '1')
 			data->player.position.x = tmpx;
-	}	
+	}
 }

@@ -1,10 +1,10 @@
-NO ./image/504.xpm
+NO ./image/green.xpm
 
-SO ./image/503.xpm
+SO ./image/yellow.xpm
 
-WE ./image/502.xpm
+WE ./image/red.xpm
 
-EA ./image/501.xpm
+EA ./image/blue.xpm
 
 F              255,255,255
 	C      200,101,122

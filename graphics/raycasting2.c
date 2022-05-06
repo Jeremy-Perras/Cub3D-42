@@ -6,7 +6,7 @@
 /*   By: jperras <jperras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 09:30:43 by jperras           #+#    #+#             */
-/*   Updated: 2022/05/06 09:50:37 by jperras          ###   ########.fr       */
+/*   Updated: 2022/05/06 10:24:30 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,24 +44,26 @@ void	ft_draw(t_data *data, int pix, int walltext)
 	unsigned int	color;
 	char			*dst;
 
-
 	y = (HEIGHT / 2) - (HEIGHT / 4) / data->ray.perwalldist ;
-	while (y <= (HEIGHT / 2) + (HEIGHT / 4) / data->ray.perwalldist)
+	if (y >= 0 && y <= HEIGHT)
 	{
-		dst = (data->image[walltext].addr)
-			+ (int)(data->image[walltext].line_length
-				* round((data->image[walltext].size.y
-						* ((y - ((HEIGHT / 2)
-									- (HEIGHT / 4) / data->ray.perwalldist))
-							/ (((HEIGHT / 2)
-									+ (HEIGHT / 4) / data->ray.perwalldist)
-								- ((HEIGHT / 2) - (HEIGHT / 4)
-									/ data->ray.perwalldist)))))
-				+ (pix % data->image[walltext].size.x)
-				* (data->image[walltext].bits_per_pixel / 8));
-		color = *(unsigned int *) dst;
-		my_mlx_pixel_put(data, pix, y, color);
+		while (y <= (HEIGHT / 2) + (HEIGHT / 4) / data->ray.perwalldist)
+		{
+			dst = (data->image[walltext].addr)
+				+ (int)(data->image[walltext].line_length
+					* floor((data->image[walltext].size.y
+							* ((y - ((HEIGHT / 2)
+										- (HEIGHT / 4) / data->ray.perwalldist))
+								/ (((HEIGHT / 2)
+										+ (HEIGHT / 4) / data->ray.perwalldist)
+									- ((HEIGHT / 2) - (HEIGHT / 4)
+										/ data->ray.perwalldist)))))
+					+ (pix % data->image[walltext].size.x)
+					* (data->image[walltext].bits_per_pixel / 8));
+			color = *(unsigned int *) dst;
+			my_mlx_pixel_put(data, pix, y, color);
 		y++;
+		}
 	}
 }
 

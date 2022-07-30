@@ -2,7 +2,7 @@
 
 ## Table of content :
 * [What is CUB3D ?](#what-is-CUB3D-)
-* [What is in it ?](#what-is-it-)
+* [What is in it ?](#what-is-in-it-)
 * [How does is work ?](#how-does-is-work-)
 
 
